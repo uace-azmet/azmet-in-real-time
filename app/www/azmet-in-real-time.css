@@ -84,6 +84,10 @@
   top: -8px !important;
 }
 
+.nws-table .rt-tr-group .rt-tr:hover {
+  background-color: #e2e9eb !important;
+}
+
 .nws-table-footer {
   color: #606060; 
   font-size: 0.85rem;
@@ -175,8 +179,8 @@
   padding-top: 4px;
 }
 
-.nws-table .rt-tr-group .rt-tr:hover {
-  background-color: #e2e9eb !important;
+.sls-latest-data-title {
+  padding-top: 72px;
 }
 
 

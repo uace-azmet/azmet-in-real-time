@@ -1,9 +1,10 @@
 #' `fxn_slsGraphTitle.R` - Build title for station-level summaries graph
 #' 
+#' @param azmetStation - AZMet station selection by user
 #' @return `slsGraphTitle` - Title for station-level summaries graph
 
 
-fxn_slsGraphTitle <- function() {
+fxn_slsGraphTitle <- function(azmetStation) {
   slsGraphTitle <- 
     htmltools::p(
       htmltools::HTML(
@@ -11,7 +12,13 @@ fxn_slsGraphTitle <- function() {
           bsicons::bs_icon("graph-up"), 
           htmltools::HTML("&nbsp;"),
           htmltools::HTML("&nbsp;"),
-          toupper("15-minute data over the past 24 hours from across the network")
+          toupper(
+            paste0(
+              "15-minute data over the past 24 hours at the AZMet ", 
+              azmetStation, 
+              " Station"
+            )
+          )
         ),
       ),
       

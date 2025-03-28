@@ -7,29 +7,6 @@
 # 'azmet-shiny-template.html': <!-- Google tag (gtag.js) -->
 
 
-
-
-
-# Libraries
-library(azmetr)
-library(bsicons)
-library(bslib)
-library(dplyr)
-library(ggplot2)
-library(htmltools)
-library(plotly)
-library(RColorBrewer)
-library(reactable)
-library(shiny)
-library(shinyjs)
-
-# Functions. Loaded automatically at app start if in `R` folder
-#source("./R/fxn_functionName.R", local = TRUE)
-
-# Scripts. Loaded automatically at app start if in `R` folder
-#source("./R/scr_scriptName.R", local = TRUE)
-
-
 # UI --------------------
 
 ui <- 
@@ -97,6 +74,7 @@ ui <-
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
             
             shiny::htmlOutput(outputId = "slsGraphTitle"),
+            shiny::htmlOutput(outputId = "slsGraphHelpText"),
             
             layout_column_wrap(
               width = "200px", height = 300,
@@ -105,7 +83,7 @@ ui <-
             ), #|>
             #anim_width("100%", "67%"),
           
-            #  shiny::htmlOutput(outputId = "slsGraphTitle"),
+          #  shiny::htmlOutput(outputId = "slsGraphTitle"),
           #  shiny::htmlOutput(outputId = "slsGraphHelpText"),
           #  plotly::plotlyOutput(outputId = "slsGraph"),
           #  shiny::htmlOutput(outputId = "slsGraphFooter"),
@@ -358,14 +336,19 @@ server <- function(input, output, session) {
   #  fxn_slsGraphFooter()
   #})
   
-  #output$slsGraphHelpText <- shiny::renderUI({
-  #  shiny::req(dataETL())
-  #  fxn_slsGraphHelpText()
-  #})
+  output$slsGraphHelpText <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsGraphHelpText()
+  })
   
   output$slsGraphTitle <- shiny::renderUI({
     shiny::req(dataETL())
-    fxn_slsGraphTitle()
+    fxn_slsGraphTitle(azmetStation = input$azmetStation)
+  })
+  
+  output$slsLatestDataTitle <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsLatestDataTitle(azmetStation = input$azmetStation)
   })
   
   #output$stationGroupsTable <- reactable::renderReactable({

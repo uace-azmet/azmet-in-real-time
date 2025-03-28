@@ -19,7 +19,7 @@ slsSidebar <-
     ),
     
     shiny::helpText(shiny::em(
-      "Select an AZMet station to display summaries of its latest 15-minute data."
+      "Select an AZMet station to display its latest 15-minute data."
     )),
     
     shiny::selectInput(
@@ -36,20 +36,21 @@ slsSidebar <-
     #  selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
     #),
     
-    htmltools::br(),
+    #htmltools::br(),
     
-    htmltools::p(
-      htmltools::HTML(
-        paste0(
-          bsicons::bs_icon("table"), 
-          htmltools::HTML("&nbsp;"),
-          htmltools::HTML("&nbsp;"),
-          toupper("The latest 15-minute data from across the network")
-        ),
-      ),
-      
-      class = "nws-table-title"
-    ),
+    shiny::htmlOutput(outputId = "slsLatestDataTitle"),
+    #htmltools::p(
+    #  htmltools::HTML(
+    #    paste0(
+    #      bsicons::bs_icon("table"), 
+    #      htmltools::HTML("&nbsp;"),
+    #      htmltools::HTML("&nbsp;"),
+    #      toupper("The latest 15-minute data from across the network")
+    #    ),
+    #  ),
+    #  
+    #  class = "nws-table-title"
+    #),
     
     card4
     #reactable::reactableOutput(outputId = "stationGroupsTable")

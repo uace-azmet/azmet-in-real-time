@@ -1,3 +1,22 @@
+# Libraries
+library(azmetr)
+library(bsicons)
+library(bslib)
+library(dplyr)
+library(ggplot2)
+library(htmltools)
+library(plotly)
+library(RColorBrewer)
+library(reactable)
+library(shiny)
+library(shinyjs)
+
+# Functions. Loaded automatically at app start if in `R` folder
+#source("./R/fxn_functionName.R", local = TRUE)
+
+# Scripts. Loaded automatically at app start if in `R` folder
+#source("./R/scr_scriptName.R", local = TRUE)
+
 shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
 
 
@@ -14,30 +33,29 @@ azmetStations <-
 
 # Variables --------------------
 
-card1 <- card(
-  card_header("Nothing much here"),
+card1 <- bslib::card(
+  bslib::card_header("Nothing much here"),
   full_screen = TRUE,
   height = 300,
   "This is it."
 )
-card2 <- card(
-  card_header("Nothing much here"),
+card2 <- bslib::card(
+  bslib::card_header("Nothing much here"),
   full_screen = TRUE,
   height = 300,
   "This is it."
 )
-card3 <- card(
-  card_header("Nothing much here"),
+card3 <- bslib::card(
+  bslib::card_header("Nothing much here"),
   full_screen = TRUE,
   height = 300,
   "This is it."
 )
-card4 <- card(
-  card_header("Nothing much here"),
+card4 <- bslib::card(
+  bslib::card_header("Nothing much here"),
   height = 300,
   "This is it."
 )
-
 
 stationGroups <- 
   tibble::tibble(

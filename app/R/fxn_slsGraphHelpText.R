@@ -7,7 +7,7 @@ fxn_slsGraphHelpText <- function() {
   slsGraphHelpText <- 
     htmltools::p(
       htmltools::HTML(
-        "Hover over data for variable values and click or tap on legend items to toggle data visibility. Select from the icons to the right of the graph for additional functionality."
+        "Hover over data for variable values. Hover over an individual graph and click or tap on the 'Expand' button in the lower right to enlarge the graph."
       ), 
       
       class = "sls-graph-help-text"
