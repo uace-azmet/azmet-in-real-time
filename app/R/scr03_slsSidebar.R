@@ -2,7 +2,7 @@ slsSidebar <-
   bslib::sidebar(
     width = 300,
     position = "left",
-    open = list(desktop = "always", mobile = "always-above"),
+    open = list(desktop = "open", mobile = "always-above"),
     id = "sidebar",
     title = NULL,
     bg = "#FFFFFF",
@@ -15,7 +15,7 @@ slsSidebar <-
     htmltools::p(
       bsicons::bs_icon("sliders"), 
       htmltools::HTML("&nbsp;"), 
-      "DATA DISPLAY"
+      "DATA OPTIONS"
     ),
     
     shiny::helpText(shiny::em(
@@ -27,7 +27,7 @@ slsSidebar <-
       label = "AZMet Station",
       choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStation")
       selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStation")
-    ),
+    )#,
     
     #shiny::selectInput(
     #  inputId = "stationVariable", 
@@ -38,7 +38,9 @@ slsSidebar <-
     
     #htmltools::br(),
     
-    shiny::htmlOutput(outputId = "slsLatestDataTitle"),
+    #shiny::htmlOutput(outputId = "slsLatestDataTitle"),
+    #shiny::htmlOutput(outputId = "slsLatestDataUpdate")#,
+    #reactable::reactableOutput(outputId = "slsLatestDataTable"),
     #htmltools::p(
     #  htmltools::HTML(
     #    paste0(
@@ -52,6 +54,6 @@ slsSidebar <-
     #  class = "nws-table-title"
     #),
     
-    card4
+    #card4
     #reactable::reactableOutput(outputId = "stationGroupsTable")
   ) # bslib::sidebar()

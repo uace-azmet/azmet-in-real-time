@@ -34,7 +34,7 @@ ui <-
         footer = NULL,
         #height = 600,
         full_screen = FALSE,
-        wrapper = card_body,
+        #wrapper = card_body,
         
         # Network-wide Summary (nws) -----
         
@@ -75,6 +75,7 @@ ui <-
             
             shiny::htmlOutput(outputId = "slsGraphTitle"),
             shiny::htmlOutput(outputId = "slsGraphHelpText"),
+            shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             
             layout_column_wrap(
               width = "200px", height = 300,
@@ -346,9 +347,25 @@ server <- function(input, output, session) {
     fxn_slsGraphTitle(azmetStation = input$azmetStation)
   })
   
+  #output$slsLatestDataTable <- shiny::renderUI({
+  #  shiny::req(dataETL())
+  #  fxn_slsLatestDataTable(
+  #    azmetStation = input$azmetStation,
+  #    inData = nwsData()
+  #  )
+  #})
+  
   output$slsLatestDataTitle <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_slsLatestDataTitle(azmetStation = input$azmetStation)
+  })
+  
+  output$slsLatestDataUpdate <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsLatestDataUpdate(
+      azmetStation = input$azmetStation,
+      inData = nwsData()
+    )
   })
   
   #output$stationGroupsTable <- reactable::renderReactable({

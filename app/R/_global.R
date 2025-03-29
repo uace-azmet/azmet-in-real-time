@@ -33,11 +33,34 @@ azmetStations <-
 
 # Variables --------------------
 
+
+x <- c(1:100)
+random_y <- rnorm(100, mean = 0)
+data <- data.frame(x, random_y)
+
+fig <- plot_ly(data, x = ~x, y = ~random_y, type = 'scatter', mode = 'lines') %>% 
+  plotly::config(
+    displaylogo = FALSE,
+    displayModeBar = FALSE)
+
+
 card1 <- bslib::card(
-  bslib::card_header("Nothing much here"),
+  id = "cardGraph",
+  bslib::card_header(
+    htmltools::HTML(
+      paste0(
+        "P<sup>", 
+        tags$span(style = "font-weight: normal", "1"), 
+        "</sup>",
+        htmltools::HTML("&nbsp;"),
+        htmltools::HTML("&nbsp;"),
+        tags$span(style = "font-weight: normal; font-size: normal", " 0.25 in")
+      )
+    )
+  ),
   full_screen = TRUE,
   height = 300,
-  "This is it."
+  fig
 )
 card2 <- bslib::card(
   bslib::card_header("Nothing much here"),
