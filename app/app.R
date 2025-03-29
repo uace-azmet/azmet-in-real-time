@@ -78,9 +78,9 @@ ui <-
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             
             layout_column_wrap(
-              width = "200px", height = 300,
-              card1, card2, card3, card1, card2, card3, card1, card2, card3,
-              card1, card2, card3, card1, card2, card3, card1, card2, card3
+              width = 300, height = 600,
+              !!!list(card1, card2, card3, card1, card2, card3, card1, card2, card3,
+              card1, card2, card3, card1, card2, card3, card1, card2, card3)
             ), #|>
             #anim_width("100%", "67%"),
           

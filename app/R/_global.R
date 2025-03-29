@@ -45,7 +45,6 @@ fig <- plot_ly(data, x = ~x, y = ~random_y, type = 'scatter', mode = 'lines') %>
 
 
 card1 <- bslib::card(
-  id = "cardGraph",
   bslib::card_header(
     htmltools::HTML(
       paste0(
@@ -58,25 +57,28 @@ card1 <- bslib::card(
       )
     )
   ),
-  full_screen = TRUE,
-  height = 300,
-  fig
+  bslib::card_body(
+    id = "slsCardBody",
+    full_screen = TRUE,
+    #height = "500px",
+    fig
+  )#,
+  #height = "500px"
 )
 card2 <- bslib::card(
   bslib::card_header("Nothing much here"),
   full_screen = TRUE,
-  height = 300,
+  #height = "300px",
   "This is it."
 )
 card3 <- bslib::card(
   bslib::card_header("Nothing much here"),
   full_screen = TRUE,
-  height = 300,
+  #height = "300px",
   "This is it."
 )
 card4 <- bslib::card(
-  bslib::card_header("Nothing much here"),
-  height = 300,
+  #height = "300px",
   "This is it."
 )
 
