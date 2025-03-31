@@ -18,9 +18,11 @@ slsSidebar <-
       "DATA OPTIONS"
     ),
     
-    shiny::helpText(shiny::em(
-      "Select an AZMet station to display its latest 15-minute data."
-    )),
+    shiny::helpText(
+      shiny::em(
+        "Select an AZMet station to display its latest 15-minute data."
+      )
+    ),
     
     shiny::selectInput(
       inputId = "azmetStation", 

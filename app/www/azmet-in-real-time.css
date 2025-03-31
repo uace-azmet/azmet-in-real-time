@@ -71,6 +71,8 @@
   font-size: 1rem;
   font-style: italic;
   font-weight: normal;
+  padding-bottom: 4px;
+  padding-top: 12px;
 }
 
 .main.bslib-gap-spacing.html-fill-container {
@@ -176,17 +178,21 @@
   font-size: 1rem;
   font-style: italic;
   font-weight: normal;
-  padding-top: 4px;
+  margin-bottom: 4px;
+  margin-top: 12px;
 }
 
 /* .sls-latest-data-title {
   margin-top: 4.5rem;
-}
+}  */
 
 .sls-latest-data-update {
   color: #191919;
-  margin-top: 1rem;
-} */
+  font-family: monospace !important;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
 
 
 /* id */

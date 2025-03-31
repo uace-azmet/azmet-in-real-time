@@ -46,20 +46,43 @@ fig <- plot_ly(data, x = ~x, y = ~random_y, type = 'scatter', mode = 'lines') %>
 
 card1 <- bslib::card(
   bslib::card_header(
-    htmltools::HTML(
-      paste0(
-        "P<sup>", 
-        tags$span(style = "font-weight: normal", "1"), 
-        "</sup>",
-        htmltools::HTML("&nbsp;"),
-        htmltools::HTML("&nbsp;"),
-        tags$span(style = "font-weight: normal; font-size: normal", " 0.25 in")
-      )
-    )
+    htmltools::div(htmltools::HTML(
+      #htmltools::div(
+        
+        paste0(
+          "P<sup>", 
+          tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem; text-align: left;", "1"), 
+          "</sup>",
+          #htmltools::HTML("&nbsp;"),
+          #htmltools::HTML("&nbsp;"),
+          tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem; text-align: right;", " 0.25 in")
+        )
+        
+      #  paste0(
+      #    tags$span(style = "font-family: monospace; font-weight: bold; font-size: 0.8rem;", "P"),
+      #    "<sup>", 
+      #    tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem;", "1"), 
+      #    "</sup>"
+      #  )
+      ))
+    
+      #htmltools::div(
+      #  tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem; text-align: right;", " 0.25 in")
+      #)
+      #paste0(
+      #  "P<sup>", 
+      #  tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem;", "1"), 
+      #  "</sup>",
+      #  htmltools::HTML("&nbsp;"),
+      #  htmltools::HTML("&nbsp;"),
+      #  tags$span(style = "font-family: monospace; font-weight: normal; font-size: 0.8rem;", " 0.25 in")
+      #)
+    #)
   ),
+  full_screen = TRUE,
   bslib::card_body(
     id = "slsCardBody",
-    full_screen = TRUE,
+    #full_screen = TRUE,
     #height = "500px",
     fig
   )#,
