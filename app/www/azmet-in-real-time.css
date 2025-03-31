@@ -71,6 +71,7 @@
   font-size: 1rem;
   font-style: italic;
   font-weight: normal;
+  margin-top: 0px;
   padding-bottom: 4px;
   padding-top: 12px;
 }
@@ -166,11 +167,17 @@
   padding-top: 48px !important;
 }
 
+.sls-card-header {
+  background-color: #F7F7F7 !important;
+  border-bottom-width: 1px !important;
+  border-bottom-color: var(--bs-card-border-color) !important;
+}
+
 .sls-graph-footer {
   color: #606060; 
   font-size: 0.85rem;
   font-style: normal;
-  margin-top: 0.25rem;
+  padding-top: 0.25rem;
 }
 
 .sls-graph-help-text {
@@ -178,18 +185,18 @@
   font-size: 1rem;
   font-style: italic;
   font-weight: normal;
-  margin-bottom: 4px;
-  margin-top: 12px;
+  padding-bottom: 4px;
+  padding-top: 12px;
 }
 
 /* .sls-latest-data-title {
   margin-top: 4.5rem;
-}  */
+} */
 
 .sls-latest-data-update {
   color: #191919;
   font-family: monospace !important;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 12px;
   margin-top: 12px;
 }
@@ -197,12 +204,12 @@
 
 /* id */
 
-#cardGraph {
+/* #cardGraph {
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-}
+} */
 
 #refreshDataButton {
   background-color: transparent; 
@@ -224,12 +231,12 @@
   color: #fff;
 }
 
-#slsCardBody {
+/* #slsCardBody {
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-}
+} */
 
 /* #nwsDownloadCSV {
   background-color: transparent; 

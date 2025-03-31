@@ -67,9 +67,6 @@ ui <-
           #), #|>
             #anim_width("100%", "67%"),
           
-          
-          
-          
           bslib::layout_sidebar(
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
             
@@ -80,8 +77,8 @@ ui <-
             layout_column_wrap(
               width = 300, height = 300,
               #!!!list(
-                card1, card2, card3, card1, card2, card3, card1, card2, card3,
-              card1, card2, card3, card1, card2, card3, card1, card2, card3#)
+                card1, card1, card1, card1, card1, card1, card1, card1, card1,
+              card1, card1, card1, card1, card1, card1, card1, card1, card1#)
             ), #|>
             #anim_width("100%", "67%"),
           
