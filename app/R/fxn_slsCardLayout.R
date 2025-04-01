@@ -12,10 +12,12 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
   #data <- data.frame(x, random_y)
   
   inDataFull <- inDataFull %>% 
-    dplyr::filter(meta_station_name == azmetStation)
+    dplyr::filter(meta_station_name == azmetStation) %>% 
+    dplyr::mutate(datetime = lubridate::ymd_hms(datetime))
   
   inDataLatest <- inDataLatest %>% 
-    dplyr::filter(meta_station_name == azmetStation)
+    dplyr::filter(meta_station_name == azmetStation) %>% 
+    dplyr::mutate(datetime = lubridate::ymd_hms(datetime))
   
   
   fig <- 
@@ -26,20 +28,50 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
       type = "scatter", 
       mode = "lines+markers",
       line = list(color = "#606060", width = 1),
-      marker = list(color = "#606060", size = 3)
+      marker = list(color = "#606060", size = 3),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>", "RH", ":</b> ", relative_humidity, " %"
+      )
     ) %>%
     plotly::config(
       displaylogo = FALSE,
       displayModeBar = FALSE
     ) %>% 
     plotly::layout(
+      font = list(
+        color = "#191919",
+        family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        size = 13
+      ),
+      hoverlabel = list(
+        font = list(
+          family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+          size = 14
+        )
+      ),
+      margin = list(
+        l = 0,
+        r = 0, # For space between plot and modebar
+        b = 0, # For space between x-axis title and caption or figure help text
+        t = 0,
+        pad = 0
+      ),
       xaxis = list(
         showgrid = FALSE,
         showticklabels = FALSE,
+        #standoff = -20,
+        #ticklen = 0,
+        #ticktext = list(~min(datetime), ~max(datetime)),
+        #tickvals = list(~min(datetime), ~max(datetime)),
         title = "Date and Time",
         zeroline = FALSE
       ),
       yaxis = list(
+        #standoff = -20,
+        #ticklen = 0,
         title = "%",
         zeroline = FALSE
       )
@@ -81,15 +113,16 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
       fig,
       
       class = "p-0",
-      #min_height = 300,
+      #min_height = 150,
       #id = "slsCardBody",
       #full_screen = TRUE,
-      #height = "500px"
+      #height = "200px"
     ),
     
     class = "sls-card",
     full_screen = TRUE,
-    #height = 300
+    height = "200px",
+    min_height = "150px"
   )
   
   card_RH <- bslib::card(
@@ -124,7 +157,8 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
     
     class = "sls-card",
     full_screen = TRUE,
-    #height = 300
+    height = "200px",
+    min_height = "150px"
   )
   
   slsCardLayout <- list(

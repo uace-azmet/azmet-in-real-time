@@ -76,9 +76,9 @@ ui <-
             
             shiny::htmlOutput(outputId = "slsCardLayout"),
             #layout_column_wrap(
-            #  width = 300, height = 300,
+              #width = 300, height = 300,
               
-            #  !!!slsCardLayout()
+            #  !!!slsCardLayout
               #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
               #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
             #),
@@ -97,7 +97,7 @@ ui <-
             #border_color = NULL,
             #padding = NULL,
             #gap = NULL,
-            height = 2000
+            #height = 2000
           ),
           
           value = "station-level-summaries"
@@ -192,7 +192,8 @@ server <- function(input, output, session) {
     fxn_nwsData(inData = dataETL())
   })
   
-  slsCardLayout <- shiny::eventReactive(nwsData(), {
+  slsCardLayout <- shiny::eventReactive(
+    c(input$azmetStation, dataETL(), nwsData()), {
     fxn_slsCardLayout(
       azmetStation = input$azmetStation,
       inDataFull = dataETL(),
@@ -290,11 +291,19 @@ server <- function(input, output, session) {
   
   output$slsCardLayout <- shiny::renderUI({
     layout_column_wrap(
-  #    width = 300, height = 300,
-      
-      !!!slsCardLayout()
+      !!!slsCardLayout(),
       #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
       #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
+      #class = ,
+      fill = TRUE,
+      fillable = TRUE,
+      fixed_width = FALSE,
+      #gap = "200px",
+      heights_equal = c("all", "row"),
+      height_mobile = NULL,
+      max_height = NULL,
+      min_height = NULL,
+      width = "300px"
     )
   })
   
