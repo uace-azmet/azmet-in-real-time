@@ -74,13 +74,14 @@ ui <-
             shiny::htmlOutput(outputId = "slsGraphHelpText"),
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             
-            layout_column_wrap(
-              width = 300, height = 300,
-              #!!!list(
-                card1, card1, card1, card1, card1, card1, card1, card1, card1,
-              card1, card1, card1, card1, card1, card1, card1, card1, card1#)
-            ), #|>
-            #anim_width("100%", "67%"),
+            shiny::htmlOutput(outputId = "slsCardLayout"),
+            #layout_column_wrap(
+            #  width = 300, height = 300,
+              
+            #  !!!slsCardLayout()
+              #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
+              #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
+            #),
           
           #  shiny::htmlOutput(outputId = "slsGraphTitle"),
           #  shiny::htmlOutput(outputId = "slsGraphHelpText"),
@@ -191,6 +192,13 @@ server <- function(input, output, session) {
     fxn_nwsData(inData = dataETL())
   })
   
+  slsCardLayout <- shiny::eventReactive(nwsData(), {
+    fxn_slsCardLayout(
+      azmetStation = input$azmetStation,
+      inDataFull = dataETL(),
+      inDataLatest = nwsData()
+    )
+  })
   
   # Outputs -----
   
@@ -280,6 +288,16 @@ server <- function(input, output, session) {
     fxn_refreshDataHelpText(activeTab = input$navsetCardTab)
   })
   
+  output$slsCardLayout <- shiny::renderUI({
+    layout_column_wrap(
+  #    width = 300, height = 300,
+      
+      !!!slsCardLayout()
+      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
+      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
+    )
+  })
+  
   #output$slsDownloadButtonCSV <- shiny::renderUI({
     #shiny::req(dataETL())
   #  if (input$navsetCardTab == "station-level-summaries") {
@@ -365,10 +383,6 @@ server <- function(input, output, session) {
       inData = nwsData()
     )
   })
-  
-  #output$stationGroupsTable <- reactable::renderReactable({
-  #  stationGroupsTable
-  #})
 }
 
 
