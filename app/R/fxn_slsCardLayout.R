@@ -120,9 +120,13 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
     ),
     
     class = "sls-card",
-    full_screen = TRUE,
-    height = "200px",
-    min_height = "150px"
+    fill = TRUE,
+    full_screen = FALSE,
+    height = "120px",
+    id = NULL,
+    max_height = NULL,
+    min_height = "120px"#,
+    #wrapper = card_body
   )
   
   card_RH <- bslib::card(
@@ -156,9 +160,13 @@ fxn_slsCardLayout <- function(azmetStation, inDataFull, inDataLatest) {
     ),
     
     class = "sls-card",
-    full_screen = TRUE,
-    height = "200px",
-    min_height = "150px"
+    fill = TRUE,
+    full_screen = FALSE,
+    height = "120px",
+    id = NULL,
+    max_height = NULL,
+    min_height = "120px"#,
+    #wrapper = card_body
   )
   
   slsCardLayout <- list(

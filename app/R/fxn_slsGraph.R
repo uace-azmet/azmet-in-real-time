@@ -107,6 +107,7 @@ fxn_slsGraph <- function(inData, azmetStationGroup, stationVariable) {
         size = 13
       ),
       hoverlabel = list(
+        bgcolor = "red",
         font = list(
           family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
           size = 14

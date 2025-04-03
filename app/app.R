@@ -299,6 +299,7 @@ server <- function(input, output, session) {
       fillable = TRUE,
       fixed_width = FALSE,
       #gap = "200px",
+      #height = "200px",
       heights_equal = c("all", "row"),
       height_mobile = NULL,
       max_height = NULL,
