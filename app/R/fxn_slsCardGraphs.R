@@ -36,7 +36,11 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
   # Graphs ----------
   
   slsCardGraphs <- list(
-    plotly::plot_ly( # `precip_total_in` -----
+    
+    
+    # `precip_total_in` -----
+    
+    plotly::plot_ly(
       data = inDataFull, 
       x = ~datetime, 
       y = ~precip_total_in, 
@@ -48,7 +52,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
       text = ~paste0(
         "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
         "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
-        "<br><b>P</b><sup>1</sup><b>:</b> ", precip_total_in, " in"
+        "<br><b>P</b><sup>1</sup><b>:</b> ", format(precip_total_in, nsmall = 2), " in"
       )
     ) %>%
       plotly::config(
@@ -96,12 +100,17 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          tickformat = ".2f",
           title = "in", 
           zeroline = FALSE
         )
       ),
     
-    plotly::plot_ly( # `relative_humidity` -----
+    
+    # `relative_humidity` -----
+    
+    plotly::plot_ly(
       data = inDataFull, 
       x = ~datetime, 
       y = ~relative_humidity, 
@@ -113,7 +122,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
       text = ~paste0(
         "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
         "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
-        "<br><b>", "RH", ":</b> ", relative_humidity, " %"
+        "<br><b>RH:</b> ", format(relative_humidity, nsmall = 0), " %"
       )
     ) %>%
       plotly::config(
@@ -161,12 +170,17 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
-          title = "in", 
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "%", 
           zeroline = FALSE
         )
       ),
-     
-    plotly::plot_ly( # `sol_rad_Wm2` -----
+    
+    
+    # `sol_rad_Wm2` -----
+    
+    plotly::plot_ly(
       data = inDataFull, 
       x = ~datetime, 
       y = ~sol_rad_Wm2, 
@@ -178,7 +192,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
       text = ~paste0(
         "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
         "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
-        "<br><b>", "SR", ":</b> ", sol_rad_Wm2, " W/m<sup>2</sup>"
+        "<br><b>SR:</b> ", format(sol_rad_Wm2, nsmall = 2), " W/m<sup>2</sup>"
       )
     ) %>%
       plotly::config(
@@ -226,10 +240,434 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          tickformat = ".0f",
           title = "W/m<sup>2</sup>", 
           zeroline = FALSE
         )
+      ),
+    
+    
+    # `temp_airF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~temp_airF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T:</b> ", format(temp_airF, nsmall = 1), " °F"
       )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".1f",
+          title = "°F", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `temp_air_maxF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~temp_air_maxF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T<sub>max</sub></b><sup>1</sup><b>:</b> ", format(temp_air_maxF, nsmall = 1), " °F"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          #tickformat = ".1f",
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          title = "°F", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `temp_air_minF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~temp_air_minF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T<sub>min</sub></b><sup>1</sup><b>:</b> ", format(temp_air_minF, nsmall = 1), " °F"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".1f",
+          title = "°F", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `dwptF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~dwptF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T<sub>dew point</sub>:</b> ", format(dwptF, nsmall = 1), " °F"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".1f",
+          title = "°F", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `temp_soil_10cmF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~temp_soil_10cmF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T<sub>soil 4-inch</sub>:</b> ", format(temp_soil_10cmF, nsmall = 1), " °F"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".1f",
+          title = "°F", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `temp_soil_50cmF` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~temp_soil_50cmF, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>T<sub>soil 20-inch</sub>:</b> ", format(temp_soil_50cmF, nsmall = 1), " °F"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+          tickformat = ".1f",
+          title = "°F", 
+          zeroline = FALSE
+        )
+      )
+    
+    
   ) # `slsCardGraphs`
   
   return(slsCardGraphs)
