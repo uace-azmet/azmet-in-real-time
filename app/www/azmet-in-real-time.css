@@ -78,7 +78,7 @@
 
 /* https://github.com/plotly/plotly.js/issues/2342 */
 .hovertext {
-  fill-opacity: 0.9;
+  fill-opacity: 0.85;
 }
 
 .main.bslib-gap-spacing.html-fill-container {

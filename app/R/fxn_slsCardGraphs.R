@@ -43,7 +43,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           size = 11
         ),
         hoverlabel = list(
-          bordercolor = "#FFFFFF",
+          bordercolor = "rgba(0, 0, 0, 0)",
           font = list(
             color = "#FFFFFF",
             family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
@@ -59,9 +59,22 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
         ),
         xaxis = list(
           range = list(~(min(datetime) - 3000), ~(max(datetime) + 3000)), # unix timestamp valueshowgrid = FALSE,
-          showgrid = FALSE,
-          showticklabels = FALSE,
-          title = "Date and Time",
+          tickfont = list(
+            size = 11 
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(min(datetime)), " 23:59:59"), 
+              tz = "America/Phoenix"
+            )
+            )
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
           zeroline = FALSE
         ),
         yaxis = list(
@@ -85,19 +98,6 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
         "<br><b>", "RH", ":</b> ", relative_humidity, " %"
       )
     ) %>%
-      plotly::add_annotations(
-        text = ~(gsub(" 0", " ", format(as.Date(min(datetime)) + 1, "%b %d"))),
-        x = 
-          ~(lubridate::ymd_hms(
-            paste0(as.Date(min(datetime)), " 23:59:59"), 
-            tz = "America/Phoenix")),
-        y = 0,
-        yref = "paper",
-        #yanchor = "bottom",
-        showarrow = FALSE,
-        ax = 10000
-        #textangle = -90
-      ) %>% 
       plotly::config(
         displaylogo = FALSE,
         displayModeBar = FALSE
@@ -109,7 +109,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           size = 11
         ),
         hoverlabel = list(
-          bordercolor = "#FFFFFF",
+          bordercolor = "rgba(0, 0, 0, 0)",
           font = list(
             color = "#FFFFFF",
             family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
@@ -125,18 +125,12 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
         ),
         xaxis = list(
           range = list(~(min(datetime) - 3000), ~(max(datetime) + 3000)), # unix timestamp valueshowgrid = FALSE,
-          #tickangle = -90,
-          #tickfont = list(
-          #  color = "#989898" 
-          #),
-          #ticklabeloverflow = "allow",
-          #ticklabelposition = "outside top",
-          #ticklabelshift = 1000,
-          #ticktext = list(
-          #  ~(gsub(
-          #    " 0", " ", format(as.Date(min(datetime)), "%b %d")
-          #   ))
-          #),
+          tickfont = list(
+            size = 11 
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
           tickvals = list(
             ~(lubridate::ymd_hms(
               paste0(as.Date(min(datetime)), " 23:59:59"), 
@@ -145,8 +139,8 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
             )
           ),
           showgrid = TRUE,
-          showticklabels = FALSE,
-          title = "Date and Time",
+          showticklabels = TRUE,
+          title = FALSE,
           zeroline = FALSE
         ),
         yaxis = list(

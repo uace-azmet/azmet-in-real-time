@@ -58,7 +58,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     height = "120px",
     id = NULL,
     max_height = NULL,
-    min_height = "120px"#,
+    min_height = "150px"#,
     #wrapper = card_body
   )
   
