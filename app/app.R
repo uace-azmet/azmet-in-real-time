@@ -192,12 +192,20 @@ server <- function(input, output, session) {
     fxn_nwsData(inData = dataETL())
   })
   
-  slsCardLayout <- shiny::eventReactive(
+  slsCardGraphs <- shiny::eventReactive(
     c(input$azmetStation, dataETL(), nwsData()), {
+      fxn_slsCardGraphs(
+        azmetStation = input$azmetStation,
+        inDataFull = dataETL()
+      )
+    })
+  
+  slsCardLayout <- shiny::eventReactive(
+    c(input$azmetStation, nwsData(), slsCardGraphs()), {
     fxn_slsCardLayout(
       azmetStation = input$azmetStation,
-      inDataFull = dataETL(),
-      inDataLatest = nwsData()
+      inDataLatest = nwsData(),
+      slsCardGraphs = slsCardGraphs()
     )
   })
   
