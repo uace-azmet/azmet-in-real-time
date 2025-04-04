@@ -12,24 +12,43 @@
 
 
 fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
+  
+  
+  # Variables ----------
+  
   inDataFull <- inDataFull %>% 
     dplyr::filter(meta_station_name == azmetStation) %>% 
     dplyr::mutate(datetime = lubridate::ymd_hms(datetime))
   
+  hoverlabelFontColor = "#FFFFFF"
+  hoverlabelFontSize = 14
+  layoutFontColor = "#707070"
+  layoutFontFamily = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+  layoutFontSize = 11
+  layoutMargin = 6
+  layoutPadding = 0
+  traceLineColor = "#808080"
+  traceLineWidth = 1
+  traceMarkerColor = "#808080"
+  traceMarkerSize = 3
+  
+  
+  # Graphs ----------
+  
   slsCardGraphs <- list(
-    plotly::plot_ly(
+    plotly::plot_ly( # `precip_total_in` -----
       data = inDataFull, 
       x = ~datetime, 
       y = ~precip_total_in, 
       type = "scatter", 
       mode = "lines+markers",
-      line = list(color = "#808080", width = 1),
-      marker = list(color = "#808080", size = 3),
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
       hoverinfo = "text",
       text = ~paste0(
         "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
         "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
-        "<br><b>", "RH", ":</b> ", precip_total_in, " in"
+        "<br><b>P</b><sup>1</sup><b>:</b> ", precip_total_in, " in"
       )
     ) %>%
       plotly::config(
@@ -38,39 +57,38 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
       ) %>% 
       plotly::layout(
         font = list(
-          color = "#707070",
-          family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-          size = 11
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
         ),
         hoverlabel = list(
           bordercolor = "rgba(0, 0, 0, 0)",
           font = list(
-            color = "#FFFFFF",
-            family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-            size = 14
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
           )
         ),
         margin = list(
-          l = 6,
-          r = 6,
-          b = 6,
-          t = 6,
-          pad = 0
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
         ),
         xaxis = list(
-          range = list(~(min(datetime) - 3000), ~(max(datetime) + 3000)), # unix timestamp valueshowgrid = FALSE,
-          tickfont = list(
-            size = 11 
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
           ),
           ticktext = list(
             ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
           ),
           tickvals = list(
             ~(lubridate::ymd_hms(
-              paste0(as.Date(min(datetime)), " 23:59:59"), 
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
               tz = "America/Phoenix"
-            )
-            )
+            ))
           ),
           showgrid = TRUE,
           showticklabels = TRUE,
@@ -78,19 +96,19 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
-          title = "in",
+          title = "in", 
           zeroline = FALSE
         )
       ),
     
-    plotly::plot_ly(
+    plotly::plot_ly( # `relative_humidity` -----
       data = inDataFull, 
       x = ~datetime, 
       y = ~relative_humidity, 
       type = "scatter", 
       mode = "lines+markers",
-      line = list(color = "#808080", width = 1),
-      marker = list(color = "#808080", size = 3),
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
       hoverinfo = "text",
       text = ~paste0(
         "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
@@ -104,39 +122,38 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
       ) %>% 
       plotly::layout(
         font = list(
-          color = "#707070",
-          family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-          size = 11
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
         ),
         hoverlabel = list(
           bordercolor = "rgba(0, 0, 0, 0)",
           font = list(
-            color = "#FFFFFF",
-            family = "proxima-nova, calibri, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-            size = 14
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
           )
         ),
         margin = list(
-          l = 6,
-          r = 6,
-          b = 6,
-          t = 6,
-          pad = 0
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
         ),
         xaxis = list(
-          range = list(~(min(datetime) - 3000), ~(max(datetime) + 3000)), # unix timestamp valueshowgrid = FALSE,
-          tickfont = list(
-            size = 11 
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
           ),
           ticktext = list(
             ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
           ),
           tickvals = list(
             ~(lubridate::ymd_hms(
-              paste0(as.Date(min(datetime)), " 23:59:59"), 
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
               tz = "America/Phoenix"
-             )
-            )
+            ))
           ),
           showgrid = TRUE,
           showticklabels = TRUE,
@@ -144,12 +161,76 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
-          title = "%",
+          title = "in", 
+          zeroline = FALSE
+        )
+      ),
+     
+    plotly::plot_ly( # `sol_rad_Wm2` -----
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~sol_rad_Wm2, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>", "SR", ":</b> ", sol_rad_Wm2, " W/m<sup>2</sup>"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          title = "W/m<sup>2</sup>", 
           zeroline = FALSE
         )
       )
-  )
-  
+  ) # `slsCardGraphs`
   
   return(slsCardGraphs)
 }

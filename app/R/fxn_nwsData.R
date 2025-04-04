@@ -7,7 +7,7 @@
 fxn_nwsData <- function(inData) {
   nwsData <- inData |>
     dplyr::select(
-      meta_station_group,
+      #meta_station_group,
       meta_station_name,
       datetime,
       #meta_bat_volt,
@@ -38,8 +38,8 @@ fxn_nwsData <- function(inData) {
     
     dplyr::group_by(meta_station_name) |>
     dplyr::filter(datetime == max(datetime)) |>
-    dplyr::ungroup() |>
-    dplyr::select(!meta_station_group)
+    dplyr::ungroup() #|>
+    #dplyr::select(!meta_station_group)
     
   return(nwsData)
 }
