@@ -54,38 +54,14 @@ ui <-
         bslib::nav_panel(
           title = "Station-level Summaries",
           
-          #shiny::selectInput(
-          #  inputId = "azmetStationGroup", 
-          #  label = "AZMet Station Group",
-          #  choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
-          #  selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
-          #),
-          
-          #layout_column_wrap(
-          #  width = "200px", height = 300,
-          #  card1, card2, card3
-          #), #|>
-            #anim_width("100%", "67%"),
-          
           bslib::layout_sidebar(
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
             
-            shiny::htmlOutput(outputId = "slsGraphTitle"),
-            shiny::htmlOutput(outputId = "slsGraphHelpText"),
+            shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
+            shiny::htmlOutput(outputId = "slsCardLayoutHelpText"),
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
-            
-            layout_column_wrap(
-              width = 300, height = 300,
-              #!!!list(
-                card1, card1, card1, card1, card1, card1, card1, card1, card1,
-              card1, card1, card1, card1, card1, card1, card1, card1, card1#)
-            ), #|>
-            #anim_width("100%", "67%"),
-          
-          #  shiny::htmlOutput(outputId = "slsGraphTitle"),
-          #  shiny::htmlOutput(outputId = "slsGraphHelpText"),
-          #  plotly::plotlyOutput(outputId = "slsGraph"),
-          #  shiny::htmlOutput(outputId = "slsGraphFooter"),
+            shiny::htmlOutput(outputId = "slsCardLayout"),
+            shiny::htmlOutput(outputId = "slsCardLayoutFooter")
             
             #fillable = TRUE,
             #fill = TRUE,
@@ -96,7 +72,7 @@ ui <-
             #border_color = NULL,
             #padding = NULL,
             #gap = NULL,
-            height = 2000
+            #height = 2000
           ),
           
           value = "station-level-summaries"
@@ -191,6 +167,22 @@ server <- function(input, output, session) {
     fxn_nwsData(inData = dataETL())
   })
   
+  slsCardGraphs <- shiny::eventReactive(
+    c(input$azmetStation, dataETL(), nwsData()), {
+      fxn_slsCardGraphs(
+        azmetStation = input$azmetStation,
+        inDataFull = dataETL()
+      )
+    })
+  
+  slsCardLayout <- shiny::eventReactive(
+    c(input$azmetStation, nwsData(), slsCardGraphs()), {
+    fxn_slsCardLayout(
+      azmetStation = input$azmetStation,
+      inDataLatest = nwsData(),
+      slsCardGraphs = slsCardGraphs()
+    )
+  })
   
   # Outputs -----
   
@@ -280,6 +272,40 @@ server <- function(input, output, session) {
     fxn_refreshDataHelpText(activeTab = input$navsetCardTab)
   })
   
+  output$slsCardLayout <- shiny::renderUI({
+    layout_column_wrap(
+      !!!slsCardLayout(),
+      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
+      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
+      #class = ,
+      fill = TRUE,
+      fillable = TRUE,
+      fixed_width = FALSE,
+      #gap = "200px",
+      #height = "200px",
+      heights_equal = c("all", "row"),
+      height_mobile = NULL,
+      max_height = NULL,
+      min_height = NULL,
+      width = "300px"
+    )
+  })
+  
+  output$slsCardLayoutFooter <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsCardLayoutFooter()
+  })
+  
+  output$slsCardLayoutHelpText <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsCardLayoutHelpText()
+  })
+  
+  output$slsCardLayoutTitle <- shiny::renderUI({
+    shiny::req(dataETL())
+    fxn_slsCardLayoutTitle(azmetStation = input$azmetStation)
+  })
+  
   #output$slsDownloadButtonCSV <- shiny::renderUI({
     #shiny::req(dataETL())
   #  if (input$navsetCardTab == "station-level-summaries") {
@@ -335,15 +361,10 @@ server <- function(input, output, session) {
   #  fxn_slsGraphFooter()
   #})
   
-  output$slsGraphHelpText <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_slsGraphHelpText()
-  })
-  
-  output$slsGraphTitle <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_slsGraphTitle(azmetStation = input$azmetStation)
-  })
+  #output$slsGraphTitle <- shiny::renderUI({
+  #  shiny::req(dataETL())
+  #  fxn_slsGraphTitle(azmetStation = input$azmetStation)
+  #})
   
   #output$slsLatestDataTable <- shiny::renderUI({
   #  shiny::req(dataETL())
@@ -353,11 +374,6 @@ server <- function(input, output, session) {
   #  )
   #})
   
-  output$slsLatestDataTitle <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_slsLatestDataTitle(azmetStation = input$azmetStation)
-  })
-  
   output$slsLatestDataUpdate <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_slsLatestDataUpdate(
@@ -365,10 +381,6 @@ server <- function(input, output, session) {
       inData = nwsData()
     )
   })
-  
-  #output$stationGroupsTable <- reactable::renderReactable({
-  #  stationGroupsTable
-  #})
 }
 
 
