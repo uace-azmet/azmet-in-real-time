@@ -37,7 +37,6 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
   
   slsCardGraphs <- list(
     
-    
     # `precip_total_in` -----
     
     plotly::plot_ly(
@@ -1296,8 +1295,6 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         )
       )
-    
-    
   ) # `slsCardGraphs`
   
   return(slsCardGraphs)

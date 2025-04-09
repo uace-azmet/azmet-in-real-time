@@ -1,7 +1,6 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
 
-
 # Add code for the following
 # 
 # 'azmet-shiny-template.html': <!-- Google tag (gtag.js) -->
@@ -20,10 +19,8 @@ ui <-
     
     # Work-around by placing the navset in `bslib::page()`, which correctly renders tabs on webpage
     navsetCardTab = bslib::page(
-      
       title = NULL,
       theme = theme, # `scr##_theme.R`
-      #lang = "en",
       
       bslib::navset_card_tab(
         id = "navsetCardTab",
@@ -33,7 +30,7 @@ ui <-
         header = NULL,
         footer = NULL,
         #height = 600,
-        full_screen = FALSE,
+        full_screen = TRUE,
         #wrapper = card_body,
         
         # Network-wide Summary (nws) -----
@@ -85,11 +82,6 @@ ui <-
       
       shiny::htmlOutput(outputId = "refreshDataHelpText"), # Common, regardless of card tab
       shiny::uiOutput(outputId = "refreshDataButton"), # Common, regardless of card tab
-      #shiny::htmlOutput(outputId = "dataDownloadHelpText"), # Common, regardless of card tab
-      #shiny::uiOutput(outputId = "nwsDownloadButtonCSV"), # if (input$navsetCardTab == "network-wide-summary")
-      #shiny::uiOutput(outputId = "nwsDownloadButtonTSV"), # if (input$navsetCardTab == "network-wide-summary")
-      #shiny::uiOutput(outputId = "slsDownloadButtonCSV"), # if (input$navsetCardTab == "station-level-summaries")
-      #shiny::uiOutput(outputId = "slsDownloadButtonTSV"), # if (input$navsetCardTab == "station-level-summaries")
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )
@@ -99,33 +91,23 @@ ui <-
 
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
-  #shinyjs::hideElement("dataDownloadHelpText")
-  #shinyjs::hideElement("nwsDownloadButtonCSV")
-  #shinyjs::hideElement("nwsDownloadButtonTSV")
   shinyjs::hideElement("pageBottomText")
   shinyjs::hideElement("refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
   shinyjs::hideElement("refreshDataHelpText")
-  #shinyjs::hideElement("slsDownloadButtonCSV")
-  #shinyjs::hideElement("slsDownloadButtonTSV")
   
   
   # Observables -----
   
   shiny::observeEvent(dataETL(), {
-    #shinyjs::showElement("dataDownloadHelpText")
-    #shinyjs::showElement("nwsDownloadButtonCSV")
-    #shinyjs::showElement("nwsDownloadButtonTSV")
     shinyjs::showElement("pageBottomText")
     shinyjs::showElement("refreshDataButton")
     shinyjs::showElement("refreshDataHelpText")
-    #shinyjs::showElement("slsDownloadButtonCSV")
-    #shinyjs::showElement("slsDownloadButtonTSV")
     
     shiny::updateSelectInput(
       inputId = "azmetStation",
       label = "AZMet Station",
       choices = sort(unique(dataETL()$meta_station_name)),
-      selected = azmetStation() # Reactive value defined in `_global.R`
+      selected = azmetStation() # Reactive value initialized in `_global.R`
     )
   })
   
@@ -147,8 +129,7 @@ server <- function(input, output, session) {
       ignoreInit = TRUE
     )
   
-  # Filter and format 15-minute data for the most recent report from each station
-  nwsData <- shiny::eventReactive(dataETL(), {
+  nwsData <- shiny::reactive({
     fxn_nwsData(inData = dataETL())
   })
   
@@ -158,16 +139,18 @@ server <- function(input, output, session) {
         azmetStation = input$azmetStation,
         inDataFull = dataETL()
       )
-    })
+    }
+  )
   
   slsCardLayout <- shiny::eventReactive(
     c(input$azmetStation, nwsData(), slsCardGraphs()), {
-    fxn_slsCardLayout(
-      azmetStation = input$azmetStation,
-      inDataLatest = nwsData(),
-      slsCardGraphs = slsCardGraphs()
-    )
-  })
+      fxn_slsCardLayout(
+        azmetStation = input$azmetStation,
+        inDataLatest = nwsData(),
+        slsCardGraphs = slsCardGraphs()
+      )
+    }
+  )
   
   
   # Outputs -----
