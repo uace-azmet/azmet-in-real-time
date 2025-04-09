@@ -365,6 +365,352 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
   )
   
   
+  # `wind_vector_dir` -----
+  
+  card_WD <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        tags$span(style = styleHeaderVariable, "WD")
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_vector_dir, nsmall = 0)," deg")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[10]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_vector_dir` -----
+  
+  card_WD2min <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WD"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min"), "</sub>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_vector_dir, nsmall = 0)," deg")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[11]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_vector_dir_max_daily` -----
+  
+  card_WD2minmax1 <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WD"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min max"), "</sub>", 
+            "<sup>", tags$span(style = styleHeaderSup, "1"), "</sup>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_vector_dir_max_daily, nsmall = 0)," deg")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[12]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_vector_dir_max_hourly` -----
+  
+  card_WD2minmax2 <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WD"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min max"), "</sub>", 
+            "<sup>", tags$span(style = styleHeaderSup, "2"), "</sup>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_vector_dir_max_hourly, nsmall = 0)," deg")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[13]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_spd_mph` -----
+  
+  card_WS <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        tags$span(style = styleHeaderVariable, "WS")
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_spd_mph, nsmall = 1)," mph")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[14]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_spd_max_mph` -----
+  
+  card_WSmax1 <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WS"),
+            "<sub>", tags$span(style = styleHeaderSub, "max"), "</sub>", 
+            "<sup>", tags$span(style = styleHeaderSup, "1"), "</sup>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_spd_max_mph, nsmall = 1)," mph")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[15]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_spd_mean_mph` -----
+  
+  card_WS2min <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WS"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min"), "</sub>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_spd_mean_mph, nsmall = 1)," mph")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[16]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_spd_max_mph_daily` -----
+  
+  card_WS2minmax1 <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WS"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min max"), "</sub>", 
+            "<sup>", tags$span(style = styleHeaderSup, "1"), "</sup>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_spd_max_mph_daily, nsmall = 1)," mph")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[17]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
+  # `wind_2min_spd_max_mph_hourly` -----
+  
+  card_WS2minmax2 <- bslib::card(
+    bslib::card_header(
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderVariable, "WS"),
+            "<sub>", tags$span(style = styleHeaderSub, "2-min max"), "</sub>", 
+            "<sup>", tags$span(style = styleHeaderSup, "2"), "</sup>"
+          )
+        )
+      ),
+      htmltools::div(
+        htmltools::HTML(
+          paste0(
+            tags$span(style = styleHeaderHelpText, "Latest Update: "),
+            tags$span(
+              style = styleHeaderValue, 
+              paste0(format(inDataLatest$wind_2min_spd_max_mph_hourly, nsmall = 1)," mph")
+            )
+          )
+        )
+      ),
+      
+      class = classHeader
+    ),
+    
+    bslib::card_body(slsCardGraphs[[18]], class = "p-0"),
+    
+    class = "sls-card",
+    fill = TRUE,
+    full_screen = FALSE,
+    height = cardHeight,
+    id = NULL,
+    max_height = cardHeight,
+    min_height = cardHeight
+  )
+  
+  
   # Card layout list ----------
 
   slsCardLayout <- list(
@@ -376,7 +722,16 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     card_Tmin,
     card_Tdewpoint,
     card_Tsoil10cm,
-    card_Tsoil50cm
+    card_Tsoil50cm,
+    card_WD,
+    card_WD2min,
+    card_WD2minmax1,
+    card_WD2minmax2,
+    card_WS,
+    card_WSmax1,
+    card_WS2min,
+    card_WS2minmax1,
+    card_WS2minmax2
   )
   
   return(slsCardLayout)

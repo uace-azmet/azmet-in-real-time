@@ -126,7 +126,6 @@
   color: #989898; 
   font-size: 1rem;
   font-style: italic;
-  padding-top: 24px;
 }
 
 .selectize-dropdown .active {
@@ -178,14 +177,21 @@
   border-bottom-color: var(--bs-card-border-color) !important;
 }
 
-.sls-graph-footer {
+.sls-card-layout-footer {
+  color: #606060; 
+  font-size: 0.85rem;
+  font-style: normal;
+  margin-top: 0.25rem;
+}
+
+/* .sls-graph-footer {
   color: #606060; 
   font-size: 0.85rem;
   font-style: normal;
   padding-top: 0.25rem;
-}
+} */
 
-.sls-graph-help-text {
+.sls-card-layout-help-text {
   color: #989898 !important;
   font-size: 1rem;
   font-style: italic;
@@ -194,9 +200,9 @@
   padding-top: 12px;
 }
 
-/* .sls-latest-data-title {
-  margin-top: 4.5rem;
-} */
+.sls-card-layout-title {
+  color: #191919;
+}
 
 .sls-latest-data-update {
   color: #191919;
@@ -205,6 +211,10 @@
   margin-bottom: 12px;
   margin-top: 12px;
 }
+
+/* .sls-latest-data-title {
+  margin-top: 4.5rem;
+} */
 
 
 /* id */

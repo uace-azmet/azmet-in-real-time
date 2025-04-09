@@ -665,6 +665,636 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           title = "°F", 
           zeroline = FALSE
         )
+      ),
+    
+    
+    # `wind_vector_dir` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_vector_dir, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WD:</b> ", format(wind_vector_dir, nsmall = 0), " deg"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "deg", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_vector_dir` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_vector_dir, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WD<sub>2-min</sub>:</b> ", format(wind_2min_vector_dir, nsmall = 0), " deg"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "deg", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_vector_dir_max_daily` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_vector_dir_max_daily, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WD<sub>2-min max</sub></b><sup>1</sup><b>:</b> ", format(wind_2min_vector_dir_max_daily, nsmall = 0), " deg"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "deg", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_vector_dir_max_hourly` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_vector_dir_max_hourly, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WD<sub>2-min max</sub></b><sup>2</sup><b>:</b> ", format(wind_2min_vector_dir_max_hourly, nsmall = 0), " deg"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "deg", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_spd_mph` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_spd_mph, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WS:</b> ", format(wind_spd_mph, nsmall = 1), " mph"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "mph", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_spd_max_mph` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_spd_max_mph, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WS<sub>max</sub></b><sup>1</sup><b>:</b> ", format(wind_spd_max_mph, nsmall = 1), " mph"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "mph", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_spd_mean_mph` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_spd_mean_mph, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WS<sub>2-min</sub>:</b> ", format(wind_2min_spd_mean_mph, nsmall = 1), " mph"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "mph", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_spd_max_mph_daily` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_spd_max_mph_daily, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WS<sub>2-min max</sub></b><sup>1</sup><b>:</b> ", format(wind_2min_spd_max_mph_daily, nsmall = 1), " mph"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "mph", 
+          zeroline = FALSE
+        )
+      ),
+    
+    
+    # `wind_2min_spd_max_mph_hourly` -----
+    
+    plotly::plot_ly(
+      data = inDataFull, 
+      x = ~datetime, 
+      y = ~wind_2min_spd_max_mph_hourly, 
+      type = "scatter", 
+      mode = "lines+markers",
+      line = list(color = traceLineColor, width = traceLineWidth),
+      marker = list(color = traceMarkerColor, size = traceMarkerSize),
+      hoverinfo = "text",
+      text = ~paste0(
+        "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+        "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+        "<br><b>WS<sub>2-min max</sub></b><sup>2</sup><b>:</b> ", format(wind_2min_spd_max_mph_hourly, nsmall = 1), " mph"
+      )
+    ) %>%
+      plotly::config(
+        displaylogo = FALSE,
+        displayModeBar = FALSE
+      ) %>% 
+      plotly::layout(
+        font = list(
+          color = layoutFontColor,
+          family = layoutFontFamily,
+          size = layoutFontSize
+        ),
+        hoverlabel = list(
+          bordercolor = "rgba(0, 0, 0, 0)",
+          font = list(
+            color = hoverlabelFontColor,
+            family = layoutFontFamily,
+            size = hoverlabelFontSize
+          )
+        ),
+        margin = list(
+          l = layoutMargin,
+          r = layoutMargin,
+          b = layoutMargin,
+          t = layoutMargin,
+          pad = layoutPadding
+        ),
+        xaxis = list(
+          range = list(
+            ~(min(datetime) - 3000), # unix time
+            ~(max(datetime) + 3000)
+          ),
+          ticktext = list(
+            ~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))
+          ),
+          tickvals = list(
+            ~(lubridate::ymd_hms(
+              paste0(as.Date(max(datetime)), " 00:00:00"), 
+              tz = "America/Phoenix"
+            ))
+          ),
+          showgrid = TRUE,
+          showticklabels = TRUE,
+          title = FALSE,
+          zeroline = FALSE
+        ),
+        yaxis = list(
+          rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
+          #tickformat = ".0f",
+          title = "mph", 
+          zeroline = FALSE
+        )
       )
     
     

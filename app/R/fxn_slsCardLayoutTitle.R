@@ -1,11 +1,11 @@
-#' `fxn_slsGraphTitle.R` - Build title for station-level summaries graph
+#' `fxn_slsCardLayoutTitle.R` - Build title for time-series-graph cards on station-level summaries tab
 #' 
 #' @param azmetStation - AZMet station selection by user
-#' @return `slsGraphTitle` - Title for station-level summaries graph
+#' @return `slsCardLayoutTitle` - Title for time-series-graph cards on station-level summaries tab
 
 
-fxn_slsGraphTitle <- function(azmetStation) {
-  slsGraphTitle <- 
+fxn_slsCardLayoutTitle <- function(azmetStation) {
+  slsCardLayoutTitle <- 
     htmltools::p(
       htmltools::HTML(
         paste0(
@@ -22,8 +22,8 @@ fxn_slsGraphTitle <- function(azmetStation) {
         ),
       ),
       
-      class = "sls-graph-title"
+      class = "sls-card-layout-title"
     )
   
-  return(slsGraphTitle)
+  return(slsCardLayoutTitle)
 }
