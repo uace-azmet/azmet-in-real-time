@@ -29,33 +29,5 @@ slsSidebar <-
       label = "AZMet Station",
       choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStation")
       selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStation")
-    )#,
-    
-    #shiny::selectInput(
-    #  inputId = "stationVariable", 
-    #  label = "Station Variable",
-    #  choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
-    #  selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
-    #),
-    
-    #htmltools::br(),
-    
-    #shiny::htmlOutput(outputId = "slsLatestDataTitle"),
-    #shiny::htmlOutput(outputId = "slsLatestDataUpdate")#,
-    #reactable::reactableOutput(outputId = "slsLatestDataTable"),
-    #htmltools::p(
-    #  htmltools::HTML(
-    #    paste0(
-    #      bsicons::bs_icon("table"), 
-    #      htmltools::HTML("&nbsp;"),
-    #      htmltools::HTML("&nbsp;"),
-    #      toupper("The latest 15-minute data from across the network")
-    #    ),
-    #  ),
-    #  
-    #  class = "nws-table-title"
-    #),
-    
-    #card4
-    #reactable::reactableOutput(outputId = "stationGroupsTable")
+    )
   ) # bslib::sidebar()

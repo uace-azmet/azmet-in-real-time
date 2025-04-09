@@ -23,14 +23,8 @@ shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
 
 # Files --------------------
 
-azmetStations <- 
-  vroom::vroom(
-    file = "aux-files/azmet-stations-api-db.csv", 
-    delim = ",", 
-    col_names = TRUE, 
-    show_col_types = FALSE
-  )
-
 
 # Variables --------------------
 
+# Set up to keep `input$azmetStation` selection when refreshing data
+azmetStation <- shiny::reactiveVal(value = "Aguila")

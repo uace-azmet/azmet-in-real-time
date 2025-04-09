@@ -125,31 +125,16 @@ server <- function(input, output, session) {
       inputId = "azmetStation",
       label = "AZMet Station",
       choices = sort(unique(dataETL()$meta_station_name)),
-      selected = sort(unique(dataETL()$meta_station_name))[1]
+      selected = azmetStation() # Reactive value defined in `_global.R`
     )
-    
-    #shiny::updateSelectInput(
-    #  inputId = "stationVariable",
-    #  label = "Station Variable",
-    #  choices = 
-    #    sort(
-    #      colnames(
-    #        dplyr::select(
-    #          dataETL(), !c(datetime, meta_station_group, meta_station_name)
-    #        )
-    #      )
-    #    ),
-    #  selected = 
-    #    sort(
-    #      colnames(
-    #        dplyr::select(
-    #          dataETL(), !c(datetime, meta_station_group, meta_station_name)
-    #        )
-    #      )
-    #    )[1]
-    #)
   })
   
+  shiny::observeEvent(input$azmetStation, {
+    azmetStation(input$azmetStation)
+  }, 
+    ignoreInit = TRUE
+  )
+
   
   # Reactives -----
   
@@ -184,54 +169,8 @@ server <- function(input, output, session) {
     )
   })
   
+  
   # Outputs -----
-  
-  #output$dataDownloadHelpText <- shiny::renderUI({
-    #shiny::req(dataETL())
-  #  fxn_dataDownloadHelpText()
-  #})
-  
-  #output$nwsDownloadButtonCSV <- shiny::renderUI({
-    #shiny::req(dataETL())
-  #  if (input$navsetCardTab == "network-wide-summary") {
-  #    shiny::downloadButton(
-  #      "nwsDownloadCSV", 
-  #      label = "Download .csv", 
-  #      class = "btn btn-default btn-blue", 
-  #      type = "button"
-  #    )
-  #  } else {
-  #    return(NULL)
-  #  }
-  #})
-  
-  #output$nwsDownloadButtonTSV <- shiny::renderUI({
-    #shiny::req(dataETL())
-  #  if (input$navsetCardTab == "network-wide-summary") {
-  #    shiny::downloadButton(
-  #      "nwsDownloadTSV", 
-  #      label = "Download .tsv", 
-  #      class = "btn btn-default btn-blue", 
-  #      type = "button"
-  #    )
-  #  } else {
-  #    return(NULL)
-  #  }
-  #})
-  
-  #output$nwsDownloadCSV <- shiny::downloadHandler(
-  #  filename = function() {"AZMet-15-minute-network-wide-summary.csv"},
-  #  content = function(file) {
-  #    vroom::vroom_write(x = nwsData(), file = file, delim = ",")
-  #  }
-  #)
-  
-  #output$nwsDownloadTSV <- shiny::downloadHandler(
-  #  filename = function() {"AZMet-15-minute-network-wide-summary.tsv"},
-  #  content = function(file) {
-  #    vroom::vroom_write(x = nwsData(), file = file, delim = "\t")
-  #  }
-  #)
   
   output$nwsTable <- reactable::renderReactable({
     fxn_nwsTable(inData = nwsData())
@@ -275,8 +214,6 @@ server <- function(input, output, session) {
   output$slsCardLayout <- shiny::renderUI({
     layout_column_wrap(
       !!!slsCardLayout(),
-      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH,
-      #card_P, card_RH, card_P, card_RH, card_P, card_RH, card_P, card_RH
       #class = ,
       fill = TRUE,
       fillable = TRUE,
@@ -305,74 +242,6 @@ server <- function(input, output, session) {
     shiny::req(dataETL())
     fxn_slsCardLayoutTitle(azmetStation = input$azmetStation)
   })
-  
-  #output$slsDownloadButtonCSV <- shiny::renderUI({
-    #shiny::req(dataETL())
-  #  if (input$navsetCardTab == "station-level-summaries") {
-  #    shiny::downloadButton(
-  #      outputId = "slsDownloadCSV", 
-  #      label = "Download .csv", 
-  #      class = "btn btn-default btn-blue", 
-  #      type = "button"
-  #    )
-  #  } else {
-  #    return(NULL)
-  #  }
-  #})
-  
-  #output$slsDownloadButtonTSV <- shiny::renderUI({
-    #shiny::req(dataETL())
-  #  if (input$navsetCardTab == "station-level-summaries") {
-  #    shiny::downloadButton(
-  #      outputId = "slsDownloadTSV", 
-  #      label = "Download .tsv", 
-  #      class = "btn btn-default btn-blue", 
-  #      type = "button"
-  #    )
-  #  } else {
-  #    return(NULL)
-  #  }
-  #})
-  
-  #output$slsDownloadCSV <- shiny::downloadHandler(
-  #  filename = function() {"AZMet-15-minute-station-level-summaries.csv"},
-  #  content = function(file) {
-  #    vroom::vroom_write(x = dataETL(), file = file, delim = ",")
-  #  }
-  #)
-  
-  #output$slsDownloadTSV <- shiny::downloadHandler(
-  #  filename = function() {"AZMet-15-minute-station-level-summaries.tsv"},
-  #  content = function(file) {
-  #    vroom::vroom_write(x = dataETL(), file = file, delim = "\t")
-  #  }
-  #)
-  
-  #output$slsGraph <- plotly::renderPlotly({
-  #  fxn_slsGraph(
-  #    inData = dataETL(),
-  #    azmetStationGroup = input$azmetStationGroup,
-  #    stationVariable = input$stationVariable
-  #  )
-  #})
-  
-  #output$slsGraphFooter <- shiny::renderUI({
-  #  shiny::req(dataETL())
-  #  fxn_slsGraphFooter()
-  #})
-  
-  #output$slsGraphTitle <- shiny::renderUI({
-  #  shiny::req(dataETL())
-  #  fxn_slsGraphTitle(azmetStation = input$azmetStation)
-  #})
-  
-  #output$slsLatestDataTable <- shiny::renderUI({
-  #  shiny::req(dataETL())
-  #  fxn_slsLatestDataTable(
-  #    azmetStation = input$azmetStation,
-  #    inData = nwsData()
-  #  )
-  #})
   
   output$slsLatestDataUpdate <- shiny::renderUI({
     shiny::req(dataETL())
