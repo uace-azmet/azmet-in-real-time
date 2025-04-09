@@ -26,7 +26,6 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
   
   # Cards ----------
   
-  
   # `precip_total_in` -----
   
   card_P1 <- bslib::card(

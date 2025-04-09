@@ -184,13 +184,6 @@
   margin-top: 0.25rem;
 }
 
-/* .sls-graph-footer {
-  color: #606060; 
-  font-size: 0.85rem;
-  font-style: normal;
-  padding-top: 0.25rem;
-} */
-
 .sls-card-layout-help-text {
   color: #989898 !important;
   font-size: 1rem;
@@ -212,19 +205,8 @@
   margin-top: 12px;
 }
 
-/* .sls-latest-data-title {
-  margin-top: 4.5rem;
-} */
-
 
 /* id */
-
-/* #cardGraph {
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-} */
 
 #refreshDataButton {
   background-color: transparent; 
@@ -245,88 +227,3 @@
   background-color: #001C48; 
   color: #fff;
 }
-
-/* #slsCardBody {
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-} */
-
-/* #nwsDownloadCSV {
-  background-color: transparent; 
-  border-color: #001C48; 
-  color: #001C48; 
-  margin-bottom: 48px; 
-  margin-left: 0px;
-  margin-right: 1.5rem;
-  margin-top: 0rem;
-}
-
-#nwsDownloadTSV {
-  background-color: transparent; 
-  border-color: #001C48; 
-  color: #001C48; 
-  margin-bottom: 48px; 
-  margin-left: 0px;
-  margin-top: 0rem;
-}
-
-#nwsDownloadCSV:active {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#nwsDownloadCSV:hover {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#nwsDownloadTSV:active {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#nwsDownloadTSV:hover {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#slsDownloadCSV {
-  background-color: transparent; 
-  border-color: #001C48; 
-  color: #001C48; 
-  margin-bottom: 48px; 
-  margin-left: 0px;
-  margin-right: 1.5rem;
-  margin-top: 0rem;
-}
-
-#slsDownloadTSV {
-  background-color: transparent; 
-  border-color: #001C48; 
-  color: #001C48; 
-  margin-bottom: 48px; 
-  margin-left: 0px;
-  margin-top: 0rem;
-}
-
-#slsDownloadCSV:active {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#slsDownloadCSV:hover {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#slsDownloadTSV:active {
-  background-color: #001C48; 
-  color: #fff;
-}
-
-#slsDownloadTSV:hover {
-  background-color: #001C48; 
-  color: #fff;
-} */

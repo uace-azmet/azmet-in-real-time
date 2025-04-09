@@ -7,7 +7,6 @@
 fxn_nwsData <- function(inData) {
   nwsData <- inData |>
     dplyr::select(
-      #meta_station_group,
       meta_station_name,
       datetime,
       #meta_bat_volt,
@@ -34,12 +33,11 @@ fxn_nwsData <- function(inData) {
       wind_2min_spd_mean_mph,
       wind_2min_spd_max_mph_daily,
       wind_2min_spd_max_mph_hourly
-    )   |>
+    ) |>
     
     dplyr::group_by(meta_station_name) |>
     dplyr::filter(datetime == max(datetime)) |>
-    dplyr::ungroup() #|>
-    #dplyr::select(!meta_station_group)
+    dplyr::ungroup()
     
   return(nwsData)
 }

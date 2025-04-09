@@ -4,14 +4,15 @@
 
 
 fxn_dataETL <- function() {
-  idRetrievingData <- shiny::showNotification(
-    ui = "Retrieving the latest data . . .", 
-    action = NULL, 
-    duration = NULL, 
-    closeButton = FALSE,
-    id = "idRetrievingData",
-    type = "message"
-  )
+  idRetrievingData <- 
+    shiny::showNotification(
+      ui = "Retrieving the latest data . . .", 
+      action = NULL, 
+      duration = NULL, 
+      closeButton = FALSE,
+      id = "idRetrievingData",
+      type = "message"
+    )
   
   dataETL <- 
     azmetr::az_15min(
@@ -40,32 +41,7 @@ fxn_dataETL <- function() {
       wind_spd_mph = fxn_mps_to_mph(wind_spd_mps)
     ) |>
     
-    dplyr::mutate(
-      meta_station_group = dplyr::if_else(
-        meta_station_name %in% c("Ft Mohave CA", "Mohave", "Mohave ETo", "Mohave-2", "Parker", "Parker-2"),
-        "Group 1",
-        dplyr::if_else(
-          meta_station_name %in% c("Roll", "Wellton ETo", "Yuma N.Gila", "Yuma South", "Yuma Valley", "Yuma Valley ETo"),
-          "Group 2",
-          dplyr::if_else(
-            meta_station_name %in% c("Aguila", "Buckeye", "Harquahala", "Paloma", "Salome"),
-            "Group 3",
-            dplyr::if_else(
-              meta_station_name %in% c("Desert Ridge", "Payson", "Phoenix Encanto", "Phoenix Greenway"),
-              "Group 4",
-              dplyr::if_else(
-                meta_station_name %in% c("Coolidge", "Maricopa", "Queen Creek", "Sahuarita", "Test", "Tucson"),
-                "Group 5",
-                "Group 6"
-              )
-            )
-          )
-        )
-      )
-    ) |>
-    
     dplyr::select(
-      meta_station_group,
       meta_station_name,
       datetime,
       #meta_bat_volt,
