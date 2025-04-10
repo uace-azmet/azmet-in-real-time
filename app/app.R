@@ -1,11 +1,6 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
 
-# Add code for the following
-# 
-# 'azmet-shiny-template.html': <!-- Google tag (gtag.js) -->
-
-
 # UI --------------------
 
 ui <- 
