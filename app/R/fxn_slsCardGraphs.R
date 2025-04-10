@@ -80,6 +80,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -99,6 +100,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".2f",
           title = "in", 
@@ -150,6 +152,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -169,6 +172,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "%", 
@@ -220,6 +224,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -239,6 +244,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".0f",
           title = "W/m<sup>2</sup>", 
@@ -290,6 +296,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -309,6 +316,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
           title = "°F", 
@@ -360,6 +368,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -380,6 +389,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           title = "°F", 
           zeroline = FALSE
@@ -430,6 +440,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -449,6 +460,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
           title = "°F", 
@@ -500,6 +512,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -519,6 +532,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
           title = "°F", 
@@ -570,6 +584,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -589,6 +604,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
           title = "°F", 
@@ -640,6 +656,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -659,6 +676,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".1f",
           title = "°F", 
@@ -710,6 +728,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -729,6 +748,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "deg", 
@@ -780,6 +800,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -799,6 +820,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "deg", 
@@ -850,6 +872,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -869,6 +892,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "deg", 
@@ -920,6 +944,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -939,6 +964,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "deg", 
@@ -990,6 +1016,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -1009,6 +1036,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "mph", 
@@ -1060,6 +1088,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -1079,6 +1108,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "mph", 
@@ -1130,6 +1160,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -1149,6 +1180,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "mph", 
@@ -1200,6 +1232,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -1219,6 +1252,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "mph", 
@@ -1270,6 +1304,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           pad = layoutPadding
         ),
         xaxis = list(
+          fixedrange = TRUE,
           range = list(
             ~(min(datetime) - 3000), # unix time
             ~(max(datetime) + 3000)
@@ -1289,6 +1324,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           zeroline = FALSE
         ),
         yaxis = list(
+          fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
           title = "mph", 
