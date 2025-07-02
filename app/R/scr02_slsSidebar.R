@@ -20,7 +20,7 @@ slsSidebar <-
     
     shiny::helpText(
       shiny::em(
-        "Select an AZMet station to display its latest 15-minute data."
+        "Select an AZMet station to display its 15-minute data over the past 24 hours."
       )
     ),
     
