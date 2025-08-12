@@ -1,22 +1,21 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
-
 # UI --------------------
 
-ui <- 
+ui <-
   htmltools::htmlTemplate(
     filename = "azmet-shiny-template.html",
-    
+
     # Apparent bug in `bslib`, see: https://github.com/rstudio/bslib/issues/834
     #pageNavbar = bslib::page_navbar(
     #navsetTab = bslib::navset_tab(
     #navsetCardTab = bslib::navset_card_tab(
-    
+
     # Work-around by placing the navset in `bslib::page()`, which correctly renders tabs on webpage
     navsetCardTab = bslib::page(
       title = NULL,
       theme = theme, # `scr##_theme.R`
-      
+
       bslib::navset_card_tab(
         id = "navsetCardTab",
         selected = "network-wide-summary",
@@ -25,36 +24,42 @@ ui <-
         header = NULL,
         footer = NULL,
         #height = 600,
-        full_screen = TRUE,
+        full_screen = FALSE,
         #wrapper = card_body,
-        
+
         # Network-wide Summary (nws) -----
-        
+
         bslib::nav_panel(
-          title = "Network-wide Summary",
-          
+          title = div(
+            span("Network-wide Summary", class = "d-none d-lg-block"), #on devices "large" (lg) or larger
+            span("Network-wide", class = "d-block d-lg-none") #on smaller devices
+          ),
+
           shiny::htmlOutput(outputId = "nwsTableTitle"),
           shiny::htmlOutput(outputId = "nwsTableHelpText"),
           reactable::reactableOutput(outputId = "nwsTable"),
           shiny::htmlOutput(outputId = "nwsTableFooter"),
-          
+
           value = "network-wide-summary"
         ),
-        
+
         # Station-level summaries (sls) -----
-        
+
         bslib::nav_panel(
-          title = "Station-level Summaries",
-          
+          title = div(
+            span("Station-level Summaries", class = "d-none d-lg-block"),
+            span("Station-level", class = "d-block d-lg-none")
+          ),
+
           bslib::layout_sidebar(
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
-            
+
             shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
             shiny::htmlOutput(outputId = "slsCardLayoutHelpText"),
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             shiny::htmlOutput(outputId = "slsCardLayout"),
             shiny::htmlOutput(outputId = "slsCardLayoutFooter")
-            
+
             #fillable = TRUE,
             #fill = TRUE,
             #bg = NULL,
@@ -66,15 +71,15 @@ ui <-
             #gap = NULL,
             #height = 2000
           ),
-          
+
           value = "station-level-summaries"
         )
-       ) |>
+      ) |>
         htmltools::tagAppendAttributes(
           #https://getbootstrap.com/docs/5.0/utilities/api/
           class = "border-0 rounded-0 shadow-none"
         ),
-      
+
       shiny::htmlOutput(outputId = "refreshDataHelpText"), # Common, regardless of card tab
       shiny::uiOutput(outputId = "refreshDataButton"), # Common, regardless of card tab
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
