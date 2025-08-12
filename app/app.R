@@ -30,9 +30,10 @@ ui <-
         # Network-wide Summary (nws) -----
 
         bslib::nav_panel(
+          # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
           title = div(
-            span("Network-wide Summary", class = "d-none d-lg-block"), #on devices "large" (lg) or larger
-            span("Network-wide", class = "d-block d-lg-none") #on smaller devices
+            span("Network-wide Summary", class = "d-none d-md-block"), #on devices "medium" (md) or larger
+            span("Network-wide", class = "d-block d-md-none") #on smaller devices
           ),
 
           shiny::htmlOutput(outputId = "nwsTableTitle"),
@@ -47,8 +48,8 @@ ui <-
 
         bslib::nav_panel(
           title = div(
-            span("Station-level Summaries", class = "d-none d-lg-block"),
-            span("Station-level", class = "d-block d-lg-none")
+            span("Station-level Summaries", class = "d-none d-md-block"),
+            span("Station-level", class = "d-block d-md-none")
           ),
 
           bslib::layout_sidebar(
