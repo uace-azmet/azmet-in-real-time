@@ -57,7 +57,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -91,7 +91,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -125,7 +125,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -159,7 +159,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -199,7 +199,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -239,7 +239,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -278,7 +278,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -317,7 +317,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -356,7 +356,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -390,7 +390,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -429,7 +429,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -469,7 +469,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -509,7 +509,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -543,7 +543,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -583,7 +583,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -622,7 +622,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -662,7 +662,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
@@ -702,7 +702,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     
     class = "sls-card",
     fill = TRUE,
-    full_screen = FALSE,
+    full_screen = TRUE,
     height = cardHeight,
     id = NULL,
     max_height = cardHeight,
