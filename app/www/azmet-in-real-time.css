@@ -103,13 +103,8 @@
   margin-top: 0.25rem;
 }
 
-.nws-table-help-text {
-  color: #989898 !important;
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: normal;
-  padding-bottom: 4px;
-  padding-top: 12px;
+.nws-table-title {
+  padding-bottom: 1rem !important;
 }
 
 .page-bottom-text {

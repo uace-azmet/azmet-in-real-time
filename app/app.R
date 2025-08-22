@@ -37,7 +37,6 @@ ui <-
           ),
 
           shiny::htmlOutput(outputId = "nwsTableTitle"),
-          shiny::htmlOutput(outputId = "nwsTableHelpText"),
           reactable::reactableOutput(outputId = "nwsTable"),
           shiny::htmlOutput(outputId = "nwsTableFooter"),
 
@@ -163,11 +162,6 @@ server <- function(input, output, session) {
   output$nwsTableFooter <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_nwsTableFooter()
-  })
-  
-  output$nwsTableHelpText <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_nwsTableHelpText()
   })
   
   output$nwsTableTitle <- shiny::renderUI({
