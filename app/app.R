@@ -55,7 +55,6 @@ ui <-
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
 
             shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
-            shiny::htmlOutput(outputId = "slsCardLayoutHelpText"),
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             shiny::htmlOutput(outputId = "slsCardLayout"),
             shiny::htmlOutput(outputId = "slsCardLayoutFooter")
@@ -209,11 +208,6 @@ server <- function(input, output, session) {
   output$slsCardLayoutFooter <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_slsCardLayoutFooter()
-  })
-  
-  output$slsCardLayoutHelpText <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_slsCardLayoutHelpText()
   })
   
   output$slsCardLayoutTitle <- shiny::renderUI({
