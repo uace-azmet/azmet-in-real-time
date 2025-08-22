@@ -24,16 +24,16 @@ ui <-
         header = NULL,
         footer = NULL,
         #height = 600,
-        full_screen = FALSE,
+        full_screen = TRUE,
         #wrapper = card_body,
 
         # Network-wide Summary (nws) -----
 
         bslib::nav_panel(
           # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
-          title = div(
-            span("Network-wide Summary", class = "d-none d-md-block"), #on devices "medium" (md) or larger
-            span("Network-wide", class = "d-block d-md-none") #on smaller devices
+          title = htmltools::div(
+            htmltools::span("Network-wide Summary", class = "d-none d-md-block"), # on devices "medium" (md) or larger
+            htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
           ),
 
           shiny::htmlOutput(outputId = "nwsTableTitle"),
@@ -47,9 +47,9 @@ ui <-
         # Station-level summaries (sls) -----
 
         bslib::nav_panel(
-          title = div(
-            span("Station-level Summaries", class = "d-none d-md-block"),
-            span("Station-level", class = "d-block d-md-none")
+          title = htmltools::div(
+            htmltools::span("Station-level Summaries", class = "d-none d-md-block"),
+            htmltools::span("Station-level...", class = "d-block d-md-none")
           ),
 
           bslib::layout_sidebar(
