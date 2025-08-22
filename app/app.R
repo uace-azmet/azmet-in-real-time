@@ -176,11 +176,37 @@ server <- function(input, output, session) {
   output$refreshDataButton <- shiny::renderUI({
     #shiny::req(dataETL())
     shiny::actionButton(
-      inputId = "refreshDataButton", 
+      inputId = "refreshDataButton",
       label = "REFRESH DATA",
       icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
       class = "btn btn-block btn-blue"
     )
+    # htmltools::div(
+    # shiny::actionButton(
+    #   inputId = "refreshDataButton",
+    #   label = "REFRESH DATA",
+    #   icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
+    #   class = "btn btn-block btn-blue"
+    # ),
+    # htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
+    # bslib::tooltip(
+    #   bsicons::bs_icon("info-circle"),
+    #   "Select an AZMet station to display its 15-minute data over the past 24 hours.",
+    #   id = "infoDataOptions",
+    #   placement = "right"
+    # )
+    # )
+    # bslib::tooltip(
+    #   shiny::actionButton(
+    #     inputId = "refreshDataButton", 
+    #     label = "REFRESH DATA",
+    #     icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
+    #     class = "btn btn-block btn-blue"
+    #   ),
+    #   "Select an AZMet station to display its 15-minute data over the past 24 hours.",
+    #   id = "infoRefreshDataButton",
+    #   placement = "right"
+    # )
   })
   
   output$refreshDataHelpText <- shiny::renderUI({
