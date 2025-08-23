@@ -115,18 +115,6 @@
   color: #191919;
 }
 
-.refresh-data-help-text-nws {
-  color: #989898; 
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.refresh-data-help-text-sls {
-  color: #989898; 
-  font-size: 1rem;
-  font-style: italic;
-}
-
 .selectize-dropdown .active {
   background-color: rgb(226, 233, 235); 
   color: var(--bs-body-color);

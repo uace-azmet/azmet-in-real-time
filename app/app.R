@@ -79,8 +79,13 @@ ui <-
           class = "border-0 rounded-0 shadow-none"
         ),
 
-      shiny::htmlOutput(outputId = "refreshDataHelpText"), # Common, regardless of card tab
-      shiny::uiOutput(outputId = "refreshDataButton"), # Common, regardless of card tab
+      div(
+        shiny::uiOutput(outputId = "refreshDataButton"),
+        shiny::uiOutput(outputId = "refreshDataInfo"),
+        
+        style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
+      ),
+     
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )
@@ -92,7 +97,7 @@ server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
   shinyjs::hideElement("pageBottomText")
   shinyjs::hideElement("refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
-  shinyjs::hideElement("refreshDataHelpText")
+  shinyjs::hideElement("refreshDataInfo")
   
   
   # Observables -----
@@ -100,7 +105,7 @@ server <- function(input, output, session) {
   shiny::observeEvent(dataETL(), {
     shinyjs::showElement("pageBottomText")
     shinyjs::showElement("refreshDataButton")
-    shinyjs::showElement("refreshDataHelpText")
+    shinyjs::showElement("refreshDataInfo")
     
     shiny::updateSelectInput(
       inputId = "azmetStation",
@@ -174,44 +179,27 @@ server <- function(input, output, session) {
   })
   
   output$refreshDataButton <- shiny::renderUI({
-    #shiny::req(dataETL())
+    # shiny::req(dataETL())
     shiny::actionButton(
       inputId = "refreshDataButton",
       label = "REFRESH DATA",
       icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
       class = "btn btn-block btn-blue"
     )
-    # htmltools::div(
-    # shiny::actionButton(
-    #   inputId = "refreshDataButton",
-    #   label = "REFRESH DATA",
-    #   icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
-    #   class = "btn btn-block btn-blue"
-    # ),
-    # htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
-    # bslib::tooltip(
-    #   bsicons::bs_icon("info-circle"),
-    #   "Select an AZMet station to display its 15-minute data over the past 24 hours.",
-    #   id = "infoDataOptions",
-    #   placement = "right"
-    # )
-    # )
-    # bslib::tooltip(
-    #   shiny::actionButton(
-    #     inputId = "refreshDataButton", 
-    #     label = "REFRESH DATA",
-    #     icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
-    #     class = "btn btn-block btn-blue"
-    #   ),
-    #   "Select an AZMet station to display its 15-minute data over the past 24 hours.",
-    #   id = "infoRefreshDataButton",
-    #   placement = "right"
-    # )
   })
   
   output$refreshDataHelpText <- shiny::renderUI({
     #shiny::req(dataETL())
     fxn_refreshDataHelpText(activeTab = input$navsetCardTab)
+  })
+  
+  output$refreshDataInfo <- shiny::renderUI({
+    bslib::tooltip(
+      bsicons::bs_icon("info-circle"),
+      shiny::htmlOutput(outputId = "refreshDataHelpText"),
+      id = "refreshDataInfo",
+      placement = "right"
+    )
   })
   
   output$slsCardLayout <- shiny::renderUI({
