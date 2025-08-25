@@ -19,7 +19,7 @@ fxn_slsCardLayoutTitle <- function(azmetStation) {
               " Station"
             )
           ),
-          htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
+          htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
             "Hover over data for variable values.",

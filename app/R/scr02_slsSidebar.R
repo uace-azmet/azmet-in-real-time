@@ -16,7 +16,7 @@ slsSidebar <-
       bsicons::bs_icon("sliders"), 
       htmltools::HTML("&nbsp;"), 
       "DATA OPTIONS",
-      htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
+      htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
       bslib::tooltip(
         bsicons::bs_icon("info-circle"),
         "Select an AZMet station to display its 15-minute data over the past 24 hours.",
