@@ -7,22 +7,10 @@
 fxn_refreshDataHelpText <- function(activeTab) {
   if (activeTab == "network-wide-summary") {
     refreshDataHelpText <- 
-      htmltools::p(
-        htmltools::HTML(
-          "Click or tap the button below to refresh the above table with the latest 15-minute data."
-        ), 
-        
-        class = "refresh-data-help-text-nws"
-      )
+      "Click or tap to refresh the above table with the latest 15-minute data."
   } else if (activeTab == "station-level-summaries") {
     refreshDataHelpText <- 
-      htmltools::p(
-        htmltools::HTML(
-          "Click or tap the button below to refresh the above graphs with the latest 15-minute data."
-        ), 
-        
-        class = "refresh-data-help-text-sls"
-      )
+      "Click or tap to refresh the above graphs with the latest 15-minute data."
   }
   
   return(refreshDataHelpText)

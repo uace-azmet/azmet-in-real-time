@@ -24,20 +24,19 @@ ui <-
         header = NULL,
         footer = NULL,
         #height = 600,
-        full_screen = FALSE,
+        full_screen = TRUE,
         #wrapper = card_body,
 
         # Network-wide Summary (nws) -----
 
         bslib::nav_panel(
           # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
-          title = div(
-            span("Network-wide Summary", class = "d-none d-md-block"), #on devices "medium" (md) or larger
-            span("Network-wide", class = "d-block d-md-none") #on smaller devices
+          title = htmltools::div(
+            htmltools::span("Network-wide Summary", class = "d-none d-md-block"), # on devices "medium" (md) or larger
+            htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
           ),
 
           shiny::htmlOutput(outputId = "nwsTableTitle"),
-          shiny::htmlOutput(outputId = "nwsTableHelpText"),
           reactable::reactableOutput(outputId = "nwsTable"),
           shiny::htmlOutput(outputId = "nwsTableFooter"),
 
@@ -47,16 +46,15 @@ ui <-
         # Station-level summaries (sls) -----
 
         bslib::nav_panel(
-          title = div(
-            span("Station-level Summaries", class = "d-none d-md-block"),
-            span("Station-level", class = "d-block d-md-none")
+          title = htmltools::div(
+            htmltools::span("Station-level Summaries", class = "d-none d-md-block"),
+            htmltools::span("Station-level...", class = "d-block d-md-none")
           ),
 
           bslib::layout_sidebar(
             sidebar = slsSidebar, # `scr##_slsSidebar.R`
 
             shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
-            shiny::htmlOutput(outputId = "slsCardLayoutHelpText"),
             shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
             shiny::htmlOutput(outputId = "slsCardLayout"),
             shiny::htmlOutput(outputId = "slsCardLayoutFooter")
@@ -81,8 +79,13 @@ ui <-
           class = "border-0 rounded-0 shadow-none"
         ),
 
-      shiny::htmlOutput(outputId = "refreshDataHelpText"), # Common, regardless of card tab
-      shiny::uiOutput(outputId = "refreshDataButton"), # Common, regardless of card tab
+      div(
+        shiny::uiOutput(outputId = "refreshDataButton"),
+        shiny::uiOutput(outputId = "refreshDataInfo"),
+        
+        style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
+      ),
+     
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )
@@ -94,7 +97,7 @@ server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
   shinyjs::hideElement("pageBottomText")
   shinyjs::hideElement("refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
-  shinyjs::hideElement("refreshDataHelpText")
+  shinyjs::hideElement("refreshDataInfo")
   
   
   # Observables -----
@@ -102,7 +105,7 @@ server <- function(input, output, session) {
   shiny::observeEvent(dataETL(), {
     shinyjs::showElement("pageBottomText")
     shinyjs::showElement("refreshDataButton")
-    shinyjs::showElement("refreshDataHelpText")
+    shinyjs::showElement("refreshDataInfo")
     
     shiny::updateSelectInput(
       inputId = "azmetStation",
@@ -165,11 +168,6 @@ server <- function(input, output, session) {
     fxn_nwsTableFooter()
   })
   
-  output$nwsTableHelpText <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_nwsTableHelpText()
-  })
-  
   output$nwsTableTitle <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_nwsTableTitle()
@@ -181,9 +179,9 @@ server <- function(input, output, session) {
   })
   
   output$refreshDataButton <- shiny::renderUI({
-    #shiny::req(dataETL())
+    # shiny::req(dataETL())
     shiny::actionButton(
-      inputId = "refreshDataButton", 
+      inputId = "refreshDataButton",
       label = "REFRESH DATA",
       icon = shiny::icon(name = "rotate-right", lib = "font-awesome"),
       class = "btn btn-block btn-blue"
@@ -193,6 +191,15 @@ server <- function(input, output, session) {
   output$refreshDataHelpText <- shiny::renderUI({
     #shiny::req(dataETL())
     fxn_refreshDataHelpText(activeTab = input$navsetCardTab)
+  })
+  
+  output$refreshDataInfo <- shiny::renderUI({
+    bslib::tooltip(
+      bsicons::bs_icon("info-circle"),
+      shiny::htmlOutput(outputId = "refreshDataHelpText"),
+      id = "refreshDataInfo",
+      placement = "right"
+    )
   })
   
   output$slsCardLayout <- shiny::renderUI({
@@ -215,11 +222,6 @@ server <- function(input, output, session) {
   output$slsCardLayoutFooter <- shiny::renderUI({
     shiny::req(dataETL())
     fxn_slsCardLayoutFooter()
-  })
-  
-  output$slsCardLayoutHelpText <- shiny::renderUI({
-    shiny::req(dataETL())
-    fxn_slsCardLayoutHelpText()
   })
   
   output$slsCardLayoutTitle <- shiny::renderUI({

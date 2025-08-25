@@ -15,13 +15,16 @@ slsSidebar <-
     htmltools::p(
       bsicons::bs_icon("sliders"), 
       htmltools::HTML("&nbsp;"), 
-      "DATA OPTIONS"
-    ),
-    
-    shiny::helpText(
-      shiny::em(
-        "Select an AZMet station to display its 15-minute data over the past 24 hours."
-      )
+      "DATA OPTIONS",
+      htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+      bslib::tooltip(
+        bsicons::bs_icon("info-circle"),
+        "Select an AZMet station to display its 15-minute data over the past 24 hours.",
+        id = "infoDataOptions",
+        placement = "right"
+      ),
+      
+      class = "data-options-title"
     ),
     
     shiny::selectInput(

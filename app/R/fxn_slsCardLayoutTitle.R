@@ -18,8 +18,15 @@ fxn_slsCardLayoutTitle <- function(azmetStation) {
               azmetStation, 
               " Station"
             )
+          ),
+          htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+          bslib::tooltip(
+            bsicons::bs_icon("info-circle"),
+            "Hover over data for variable values.",
+            id = "infoCardLayoutTitle",
+            placement = "right"
           )
-        ),
+        )
       ),
       
       class = "sls-card-layout-title"
