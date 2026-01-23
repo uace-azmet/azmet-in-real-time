@@ -15,7 +15,13 @@ ui <-
     navsetCardTab = bslib::page(
       title = NULL,
       theme = theme, # `scr##_theme.R`
-
+      shiny.pwa::pwa(
+        "https://viz.datascience.arizona.edu/azmet/azmet-in-real-time/",
+        title = "AZMet",
+        # TODO: replace with block A icon?  Can also be a path to a local file. E.g. "wws/icon.png"
+        icon = "https://github.com/uace-azmet/azmetr/blob/21f4b54f2b1d050fe75d191268274508d95071b6/pkgdown/favicon/apple-touch-icon.png",
+        output = "www"
+      ),
       bslib::navset_card_tab(
         id = "navsetCardTab",
         selected = "network-wide-summary",
@@ -32,7 +38,10 @@ ui <-
         bslib::nav_panel(
           # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
           title = htmltools::div(
-            htmltools::span("Network-wide Summary", class = "d-none d-md-block"), # on devices "medium" (md) or larger
+            htmltools::span(
+              "Network-wide Summary",
+              class = "d-none d-md-block"
+            ), # on devices "medium" (md) or larger
             htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
           ),
 
@@ -47,7 +56,10 @@ ui <-
 
         bslib::nav_panel(
           title = htmltools::div(
-            htmltools::span("Station-level Summaries", class = "d-none d-md-block"),
+            htmltools::span(
+              "Station-level Summaries",
+              class = "d-none d-md-block"
+            ),
             htmltools::span("Station-level...", class = "d-block d-md-none")
           ),
 
@@ -82,10 +94,10 @@ ui <-
       htmltools::div(
         shiny::uiOutput(outputId = "refreshDataButton"),
         shiny::uiOutput(outputId = "refreshDataInfo"),
-        
+
         style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
       ),
-     
+
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )
