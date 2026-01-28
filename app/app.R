@@ -17,9 +17,8 @@ ui <-
       theme = theme, # `scr##_theme.R`
       shiny.pwa::pwa(
         "https://viz.datascience.arizona.edu/azmet/azmet-in-real-time/",
-        title = "AZMet",
-        # TODO: replace with block A icon?  Can also be a path to a local file. E.g. "wws/icon.png"
-        icon = "https://github.com/uace-azmet/azmetr/blob/21f4b54f2b1d050fe75d191268274508d95071b6/pkgdown/favicon/apple-touch-icon.png",
+        title = "AZMet in Real-time Desktop",
+        icon = "www/azmet-pwa-icon.png",
         output = "www"
       ),
       bslib::navset_card_tab(
