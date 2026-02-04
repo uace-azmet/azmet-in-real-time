@@ -1,6 +1,7 @@
 {
   "short_name": "AZMet",
-  "name": "AZMet in Real Time",
+  "name": "AZMet in Real-time",
+  "description": "Tabular and graphical summaries of the latest 15-minute data from stations across the AZMet network.",
   "icons": [
     {
       "src": "/favicon-192x192.png",
