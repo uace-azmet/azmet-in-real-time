@@ -4,17 +4,17 @@
   "description": "Tabular and graphical summaries of the latest 15-minute data from stations across the AZMet network.",
   "icons": [
     {
-      "src": "/favicon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/pwa/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
-      "src": "/favicon-512x512.png",
+      "src": "/pwa/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "https://viz.datascience.arizona.edu/azmet/azmet-in-real-time/",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#0C234B",
   "background_color": "white"

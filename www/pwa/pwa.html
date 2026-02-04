@@ -1,0 +1,19 @@
+<!-- register service worker -->
+<script>
+    if ('serviceWorker'in navigator) {
+        navigator.serviceWorker.register('/pwa/pwa-service-worker.js', {
+            scope: '/pwa/'
+        }).then(function() {
+            console.log('Service Worker Registered');
+        });
+    }
+</script>
+<!-- register webmanifest -->
+<link rel="manifest" href="pwa/manifest.webmanifest"/>
+<!-- link to app icon for older browsers -->
+<link rel="icon" type="image/png" href="pwa/icon-512x512.png"/>
+<!-- 
+Script to generate other types of icons and splash screens 
+Source: https://github.com/GoogleChromeLabs/pwacompat
+-->
+<script async src="https://cdn.jsdelivr.net/npm/pwacompat" crossorigin="anonymous"></script>

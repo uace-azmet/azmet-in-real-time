@@ -11,9 +11,9 @@ id = '6420a859-6f41-41f5-8116-faf946777d0f'
 dashboard_url = 'https://viz.datascience.arizona.edu/connect/#/apps/6420a859-6f41-41f5-8116-faf946777d0f'
 direct_url = 'https://viz.datascience.arizona.edu/content/6420a859-6f41-41f5-8116-faf946777d0f/'
 logs_url = 'https://viz.datascience.arizona.edu/connect/#/apps/6420a859-6f41-41f5-8116-faf946777d0f/logs'
-deployed_at = '2026-02-04T12:11:35-07:00'
-bundle_id = '8545'
-bundle_url = 'https://viz.datascience.arizona.edu/__api__/v1/content/6420a859-6f41-41f5-8116-faf946777d0f/bundles/8545/download'
+deployed_at = '2026-02-04T14:20:03-07:00'
+bundle_id = '8548'
+bundle_url = 'https://viz.datascience.arizona.edu/__api__/v1/content/6420a859-6f41-41f5-8116-faf946777d0f/bundles/8548/download'
 files = [
   '.posit/publish/deployments/deployment-8A0K.toml',
   '.posit/publish/pwa-test-VUF5.toml',
@@ -40,6 +40,7 @@ files = [
   'azmet-shiny-template.html',
   'renv.lock',
   'www/azmet-in-real-time.css',
+  'www/azmet-logo.png',
   'www/fonts/icomoon.eot',
   'www/fonts/icomoon.svg',
   'www/fonts/icomoon.ttf',
