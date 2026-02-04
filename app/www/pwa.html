@@ -1,0 +1,15 @@
+<script>
+            if ('serviceWorker'in navigator) {
+                navigator.serviceWorker.register('/azmet/azmet-in-real-time/pwa-service-worker.js', {
+                    scope: '/azmet/azmet-in-real-time/'
+                }).then(function() {
+                    console.log('Service Worker Registered');
+                });
+            }
+        </script>
+        <link rel="manifest" href="pwa/manifest.json"/>
+        <link rel="apple-touch-icon" href="pwa/icon.png"/>
+        <meta name="description" content="AZMet"/>
+        <meta name="theme-color" content="#000000"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
