@@ -21,7 +21,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/content/azmet-pwa-test/",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#0C234B",
   "background_color": "white"
