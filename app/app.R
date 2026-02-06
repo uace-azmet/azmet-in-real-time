@@ -1,5 +1,18 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
+
+# PROCESS FOR PWA -----
+
+# dir.create("app/www/pwa")
+# Copy `azmet-pwa-icon-192x192.png` to `app/www/pwa/`
+# Copy `azmet-pwa-icon-512x512.png` to `app/www/pwa/`
+# Copy `azmet-pwa-icon.svg` to `app/www/pwa/`
+# Copy `pwa-service-worker.js` to `app/www/pwa/`
+# Copy `pwa.html` to `app/www/pwa/`
+# Copy `manifest.webmanifest` to `app/www/`
+# Add `tags$head(includeHTML("www/pwa/pwa.html"))` to `app.R`
+
+
 # UI --------------------
 
 ui <-
@@ -15,12 +28,7 @@ ui <-
     navsetCardTab = bslib::page(
       title = NULL,
       theme = theme, # `scr##_theme.R`
-      shiny.pwa::pwa(
-        "https://viz.datascience.arizona.edu/azmet/azmet-in-real-time/",
-        title = "AZMet in Real-time Desktop",
-        icon = "www/azmet-pwa-icon.png",
-        output = "www"
-      ),
+      htmltools::tags$head(htmltools::includeHTML("www/pwa/pwa.html")),
       bslib::navset_card_tab(
         id = "navsetCardTab",
         selected = "network-wide-summary",
