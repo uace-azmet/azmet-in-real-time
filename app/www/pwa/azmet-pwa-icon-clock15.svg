@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 511.9 511.9">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .st1 {
+        fill: #0c234b;
+      }
+
+      .st2 {
+        fill: #add8e6;
+      }
+    </style>
+    <filter id="drop-shadow-1" x="0" y="0" width="511.9" height="511.9" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="st0">
+    <rect class="st2" width="511.9" height="511.9"/>
+  </g>
+  <g>
+    <path class="st1" d="M240.8,101.1h30.4v23.5h-30.4v-23.5Z"/>
+    <path class="st1" d="M223.5,76h65v31.3h-65v-31.3Z"/>
+    <path class="st1" d="M367.5,145l17.8,17.8-13.8,13.8-17.8-17.8s13.8-13.8,13.8-13.8Z"/>
+    <path class="st1" d="M372.1,120.2l38.1,38.1-18.4,18.4-38.1-38.1,18.4-18.4Z"/>
+    <path class="st1" d="M256,124.5c-86,0-155.7,69.7-155.7,155.7s69.7,155.7,155.7,155.7,155.7-69.7,155.7-155.7-69.7-155.7-155.7-155.7ZM256,405.5c-69.2,0-125.3-56.1-125.3-125.3s56.1-125.3,125.3-125.3,125.3,56.1,125.3,125.3-56.1,125.3-125.3,125.3Z"/>
+    <path class="st1" d="M256,183v97.2h97.2c0-53.7-43.5-97.2-97.2-97.2Z"/>
+  </g>
+</svg>
