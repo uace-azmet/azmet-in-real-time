@@ -1,5 +1,18 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
+
+# PROCESS FOR PWA -----
+
+# dir.create("app/www/pwa")
+# Copy `azmet-pwa-icon-192x192.png` to `app/www/pwa/`
+# Copy `azmet-pwa-icon-512x512.png` to `app/www/pwa/`
+# Copy `azmet-pwa-icon.svg` to `app/www/pwa/`
+# Copy `pwa-service-worker.js` to `app/www/pwa/`
+# Copy `pwa.html` to `app/www/pwa/`
+# Copy `manifest.webmanifest` to `app/www/`
+# Add `tags$head(includeHTML("www/pwa/pwa.html"))` to `app.R`
+
+
 # UI --------------------
 
 ui <-
@@ -15,7 +28,7 @@ ui <-
     navsetCardTab = bslib::page(
       title = NULL,
       theme = theme, # `scr##_theme.R`
-
+      htmltools::tags$head(htmltools::includeHTML("www/pwa/pwa.html")),
       bslib::navset_card_tab(
         id = "navsetCardTab",
         selected = "network-wide-summary",
@@ -32,7 +45,10 @@ ui <-
         bslib::nav_panel(
           # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
           title = htmltools::div(
-            htmltools::span("Network-wide Summary", class = "d-none d-md-block"), # on devices "medium" (md) or larger
+            htmltools::span(
+              "Network-wide Summary",
+              class = "d-none d-md-block"
+            ), # on devices "medium" (md) or larger
             htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
           ),
 
@@ -47,7 +63,10 @@ ui <-
 
         bslib::nav_panel(
           title = htmltools::div(
-            htmltools::span("Station-level Summaries", class = "d-none d-md-block"),
+            htmltools::span(
+              "Station-level Summaries",
+              class = "d-none d-md-block"
+            ),
             htmltools::span("Station-level...", class = "d-block d-md-none")
           ),
 
@@ -82,10 +101,10 @@ ui <-
       htmltools::div(
         shiny::uiOutput(outputId = "refreshDataButton"),
         shiny::uiOutput(outputId = "refreshDataInfo"),
-        
+
         style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
       ),
-     
+
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )

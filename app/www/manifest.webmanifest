@@ -1,0 +1,30 @@
+{
+  "name": "AZMet in Real-time",
+  "short_name": "AZMetRT",
+  "start_url": "./",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "pwa/azmet-pwa-icon-clock15.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa/azmet-pwa-icon-clock15-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa/azmet-pwa-icon-clock15-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "background_color": "#add8e6",
+  "theme_color": "#343a40",
+  "description": "Tabular and graphical summaries of the latest 15-minute data from stations across the network",
+  "orientation": "any"
+}
