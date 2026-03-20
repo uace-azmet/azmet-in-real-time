@@ -114,17 +114,17 @@ ui <-
 
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
-  shinyjs::hideElement("pageBottomText")
-  shinyjs::hideElement("refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
-  shinyjs::hideElement("refreshDataInfo")
+  shinyjs::hideElement(id = "pageBottomText")
+  shinyjs::hideElement(id = "refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
+  shinyjs::hideElement(id = "refreshDataInfo")
   
   
   # Observables -----
   
   shiny::observeEvent(dataETL(), {
-    shinyjs::showElement("pageBottomText")
-    shinyjs::showElement("refreshDataButton")
-    shinyjs::showElement("refreshDataInfo")
+    shinyjs::showElement(id = "pageBottomText")
+    shinyjs::showElement(id = "refreshDataButton")
+    shinyjs::showElement(id = "refreshDataInfo")
     
     shiny::updateSelectInput(
       inputId = "azmetStation",
