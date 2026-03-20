@@ -10,8 +10,10 @@ fxn_nwsTableTitle <- function() {
         paste0(
           bsicons::bs_icon("table"), 
           htmltools::HTML("&nbsp;&nbsp;"),
-          toupper("The latest 15-minute data from across the network"),
-          htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+          htmltools::HTML(
+            toupper("<strong>The latest 15-minute data from across the network</strong>")
+          ),
+          htmltools::HTML("&nbsp;"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
             "Scroll or swipe over the table to view additional rows and columns.",

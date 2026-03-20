@@ -9,17 +9,16 @@ fxn_slsCardLayoutTitle <- function(azmetStation) {
     htmltools::p(
       htmltools::HTML(
         paste0(
-          bsicons::bs_icon("graph-up"), 
-          htmltools::HTML("&nbsp;"),
-          htmltools::HTML("&nbsp;"),
+          bsicons::bs_icon("graph-up", class = "bolder-icon"), 
+          htmltools::HTML("&nbsp;&nbsp;"),
           toupper(
-            paste0(
-              "15-minute data over the past 24 hours at the AZMet ", 
-              azmetStation, 
-              " Station"
+            htmltools::HTML(
+              paste0(
+                "<strong>15-minute data over the past 24 hours at the AZMet ", azmetStation, " Station</strong>"
+              )
             )
           ),
-          htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+          htmltools::HTML("&nbsp;"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
             "Hover over data for variable values. Click or tap on the 'Expand' button to the lower right of the graphs to increase the viewing area.",
