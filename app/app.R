@@ -36,7 +36,7 @@ ui <-
         sidebar = NULL,
         header = NULL,
         footer = NULL,
-        #height = 600,
+        height = 780,
         full_screen = TRUE,
         #wrapper = card_body,
 
@@ -53,7 +53,7 @@ ui <-
           ),
 
           shiny::htmlOutput(outputId = "nwsTableTitle"),
-          reactable::reactableOutput(outputId = "nwsTable"),
+          reactable::reactableOutput(outputId = "nwsTable", height = "100%"),
           shiny::htmlOutput(outputId = "nwsTableFooter"),
 
           value = "network-wide-summary"

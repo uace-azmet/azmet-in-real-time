@@ -425,7 +425,7 @@ fxn_nwsTable <- function(inData) {
       #rowStyle = NULL,
       fullWidth = TRUE,
       width = "auto",
-      height = 400,
+      #height = 400,
       theme = 
         reactable::reactableTheme(
           color = NULL,
