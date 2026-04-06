@@ -4,6 +4,7 @@
 
 
 fxn_nwsTableTitle <- function() {
+  
   nwsTableTitle <- 
     htmltools::p(
       htmltools::HTML(

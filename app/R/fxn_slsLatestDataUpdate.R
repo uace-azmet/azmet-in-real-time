@@ -6,6 +6,7 @@
 
 
 fxn_slsLatestDataUpdate <- function(azmetStation, inData) {
+  
   slsLatestDataUpdate <- 
     htmltools::p(
       htmltools::HTML(

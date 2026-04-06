@@ -4,53 +4,62 @@
 
 
 fxn_pageBottomText <- function() {
+  
+  
   # Define inputs -----
   
-  apiURL <- a(
-    "api.azmet.arizona.edu", 
-    href="https://api.azmet.arizona.edu/v1/observations/15min",
-    target="_blank"
-  )
+  apiURL <- 
+    a(
+      "api.azmet.arizona.edu", 
+      href="https://api.azmet.arizona.edu/v1/observations/15min",
+      target="_blank"
+    )
   
-  azmetrURL <- a(
-    "azmetr", 
-    href="https://uace-azmet.github.io/azmetr/",
-    target="_blank"
-  )
+  azmetrURL <- 
+    a(
+      "azmetr", 
+      href="https://uace-azmet.github.io/azmetr/",
+      target="_blank"
+    )
   
   todayDate <- gsub(" 0", " ", format(lubridate::today(), "%B %d, %Y"))
   
   todayYear <- lubridate::year(lubridate::today())
   
-  webpageAZMet <- a(
-    "AZMet website", 
-    href="https://azmet.arizona.edu/", 
-    target="_blank"
-  )
+  webpageAZMet <- 
+    a(
+      "AZMet website", 
+      href="https://azmet.arizona.edu/", 
+      target="_blank"
+    )
   
-  webpageCode <- a(
-    "GitHub page", 
-    href="https://github.com/uace-azmet/azmet-in-real-time", 
-    target="_blank"
-  )
+  webpageCode <- 
+    a(
+      "GitHub page", 
+      href="https://github.com/uace-azmet/azmet-in-real-time", 
+      target="_blank"
+    )
   
-  webpageDataVariables <- a(
-    "data variables", 
-    href="https://azmet.arizona.edu/about/data-variables", 
-    target="_blank"
-  )
+  webpageDataVariables <- 
+    a(
+      "data variables", 
+      href="https://azmet.arizona.edu/about/data-variables", 
+      target="_blank"
+    )
   
-  webpageNetworkMap <- a(
-    "station locations", 
-    href="https://azmet.arizona.edu/about/network-map", 
-    target="_blank"
-  )
+  webpageNetworkMap <- 
+    a(
+      "station locations", 
+      href="https://azmet.arizona.edu/about/network-map", 
+      target="_blank"
+    )
   
-  webpageStationMetadata <- a(
-    "station metadata", 
-    href="https://azmet.arizona.edu/about/station-metadata", 
-    target="_blank"
-  )
+  webpageStationMetadata <- 
+    a(
+      "station metadata", 
+      href="https://azmet.arizona.edu/about/station-metadata", 
+      target="_blank"
+    )
   
   # Build text -----
   

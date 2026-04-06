@@ -29,7 +29,7 @@ library(shinyjs)
 # Initialize, part of keeping `input$azmetStation` selection when refreshing data
 azmetStation <- shiny::reactiveVal(value = "Aguila")
 
-showPageBottomText <- reactiveVal(FALSE)
+showPageBottomText <- shiny::reactiveVal(FALSE)
 
 
 # Other --------------------
