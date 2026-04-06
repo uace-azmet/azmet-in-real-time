@@ -15,6 +15,7 @@
 
 # UI --------------------
 
+
 ui <-
   htmltools::htmlTemplate(
     filename = "azmet-shiny-template.html",
@@ -112,6 +113,7 @@ ui <-
 
 # Server --------------------
 
+
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
   shinyjs::hideElement(id = "pageBottomText")
@@ -125,6 +127,7 @@ server <- function(input, output, session) {
     shinyjs::showElement(id = "pageBottomText")
     shinyjs::showElement(id = "refreshDataButton")
     shinyjs::showElement(id = "refreshDataInfo")
+    showPageBottomText(TRUE)
     
     shiny::updateSelectInput(
       inputId = "azmetStation",
