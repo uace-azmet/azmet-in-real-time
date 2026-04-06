@@ -103,7 +103,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".2f",
-          title = "in", 
+          title = "<b>in</b>", 
           zeroline = FALSE
         )
       ),
@@ -175,7 +175,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "%", 
+          title = "<b>%</b>", 
           zeroline = FALSE
         )
       ),
@@ -247,7 +247,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".0f",
-          title = "W/m<sup>2</sup>", 
+          title = "<b>W/m<sup>2</sup></b>", 
           zeroline = FALSE
         )
       ),
@@ -319,7 +319,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -391,7 +391,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
         yaxis = list(
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -463,7 +463,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -535,7 +535,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -607,7 +607,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".1f",
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -679,7 +679,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
           tickformat = ".1f",
-          title = "°F", 
+          title = "<b>°F</b>", 
           zeroline = FALSE
         )
       ),
@@ -751,7 +751,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "deg", 
+          title = "<b>deg</b>", 
           zeroline = FALSE
         )
       ),
@@ -823,7 +823,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "deg", 
+          title = "<b>deg</b>", 
           zeroline = FALSE
         )
       ),
@@ -895,7 +895,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "deg", 
+          title = "<b>deg</b>", 
           zeroline = FALSE
         )
       ),
@@ -967,7 +967,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "deg", 
+          title = "<b>deg</b>", 
           zeroline = FALSE
         )
       ),
@@ -1039,7 +1039,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "mph", 
+          title = "<b>mph</b>", 
           zeroline = FALSE
         )
       ),
@@ -1111,7 +1111,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "mph", 
+          title = "<b>mph</b>", 
           zeroline = FALSE
         )
       ),
@@ -1183,7 +1183,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "mph", 
+          title = "<b>mph</b>", 
           zeroline = FALSE
         )
       ),
@@ -1255,7 +1255,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "mph", 
+          title = "<b>mph</b>", 
           zeroline = FALSE
         )
       ),
@@ -1327,7 +1327,7 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
           fixedrange = TRUE,
           rangemode = "nonnegative", # one of ("normal" | "tozero" | "nonnegative")
           #tickformat = ".0f",
-          title = "mph", 
+          title = "<b>mph</b>", 
           zeroline = FALSE
         )
       )
