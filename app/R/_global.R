@@ -1,5 +1,6 @@
 # Libraries --------------------
 
+
 library(azmetr)
 library(bsicons)
 library(bslib)
@@ -14,6 +15,7 @@ library(shinyjs)
 
 # Files --------------------
 
+
 # Functions. Loaded automatically at app start if in `R` folder
 #source("./R/fxn_functionName.R", local = TRUE)
 
@@ -23,10 +25,14 @@ library(shinyjs)
 
 # Variables --------------------
 
+
 # Initialize, part of keeping `input$azmetStation` selection when refreshing data
 azmetStation <- shiny::reactiveVal(value = "Aguila")
 
+showPageBottomText <- shiny::reactiveVal(FALSE)
+
 
 # Other --------------------
+
 
 shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))

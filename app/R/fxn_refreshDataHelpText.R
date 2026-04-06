@@ -5,6 +5,7 @@
 
 
 fxn_refreshDataHelpText <- function(activeTab) {
+  
   if (activeTab == "network-wide-summary") {
     refreshDataHelpText <- 
       "Click or tap to refresh the above table with the latest 15-minute data."

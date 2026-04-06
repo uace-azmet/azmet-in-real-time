@@ -7,383 +7,329 @@
 fxn_nwsTable <- function(inData) {
   nwsTable <- inData |>
     reactable::reactable(
-      columns = list(
-        meta_station_name = reactable::colDef(
-          name = "Station",
-          #aggregate = NULL,
-          #sortable = NULL,
-          #resizable = NULL,
-          #filterable = NULL,
-          #searchable = NULL,
-          #filterMethod = NULL,
-          #show = TRUE,
-          #defaultSortOrder = NULL,
-          #sortNALast = FALSE,
-          #format = NULL,
-          #cell = NULL,
-          #grouped = NULL,
-          #aggregated = NULL,
-          #header = NULL,
-          #footer = NULL,
-          #details = NULL,
-          #filterInput = NULL,
-          html = TRUE,
-          na = "NA",
-          rowHeader = FALSE,
-          minWidth = 150,
-          #maxWidth = NULL,
-          #width = NULL,
-          #align = NULL,
-          #vAlign = NULL,
-          #headerVAlign = NULL,
-          sticky = "left",
-          class = "table-reactable-column-station",
-          style = list(
-            borderRight = "1px solid #989898",
-            boxShadow = "1px 0px 0px 0px #e3e3e3"
-          ),
-          #headerClass = NULL,
-          headerStyle = list(
-            borderRight = "1px solid #989898",
-            boxShadow = "1px 1px 0px 0px #e3e3e3"
-          ),
-          #footerClass = NULL,
-          #footerStyle = NULL
-        ), 
-        datetime = reactable::colDef(
-          name = "Latest Update",
-          html = TRUE,
-          minWidth = 180,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        #meta_bat_volt = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "Batt<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(V)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 2),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        precip_total_in = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "P<sup>", 
-                tags$span(style = "font-weight: normal", "1"), 
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(in)")
-              )
+      columns = 
+        list(
+          meta_station_name = 
+            reactable::colDef(
+              name = "Station",
+              #aggregate = NULL,
+              #sortable = NULL,
+              #resizable = NULL,
+              #filterable = NULL,
+              #searchable = NULL,
+              #filterMethod = NULL,
+              #show = TRUE,
+              #defaultSortOrder = NULL,
+              #sortNALast = FALSE,
+              #format = NULL,
+              #cell = NULL,
+              #grouped = NULL,
+              #aggregated = NULL,
+              #header = NULL,
+              #footer = NULL,
+              #details = NULL,
+              #filterInput = NULL,
+              html = TRUE,
+              na = "NA",
+              rowHeader = FALSE,
+              minWidth = 150,
+              #maxWidth = NULL,
+              #width = NULL,
+              #align = NULL,
+              #vAlign = NULL,
+              #headerVAlign = NULL,
+              sticky = "left",
+              class = "table-reactable-column-station",
+              style = 
+                list(
+                  borderRight = "1px solid #989898",
+                  boxShadow = "1px 0px 0px 0px #e3e3e3"
+                ),
+              #headerClass = NULL,
+              headerStyle = 
+                list(
+                  borderRight = "1px solid #989898",
+                  boxShadow = "1px 1px 0px 0px #e3e3e3"
+                ),
+              #footerClass = NULL,
+              #footerStyle = NULL
+            ), 
+          datetime = 
+            reactable::colDef(
+              name = "Latest Update",
+              html = TRUE,
+              minWidth = 180,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 2),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        relative_humidity = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "RH<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(%)")
-              )
+          precip_total_in = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "P<sup>", 
+                    tags$span(style = "font-weight: normal", "1"), 
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(in)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 2),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 0),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        sol_rad_Wm2 = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "SR<br>", 
-                tags$span(
-                  style = "font-weight: normal; font-size: 0.8rem",
-                  htmltools::HTML("(W/m<sup>2</sup>)")
-                )
-              )
+          relative_humidity = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "RH<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(%)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 0),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 2),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        temp_airF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          sol_rad_Wm2 = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "SR<br>", 
+                    tags$span(
+                      style = "font-weight: normal; font-size: 0.8rem",
+                      htmltools::HTML("(W/m<sup>2</sup>)")
+                    )
+                  )
+                ),
+              format = reactable::colFormat(digits = 2),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        temp_air_maxF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<sub>max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "1"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          temp_airF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        temp_air_minF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<sub>min</sub><sup>", 
-                tags$span(style = "font-weight: normal", "1"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          temp_air_maxF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "1"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        #temp_panelF = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "T<sub>panel</sub><br>", 
-        #        tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 1),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        dwptF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<sub>dew point</sub><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          temp_air_minF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>min</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "1"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        #temp_wetbulbF = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "T<sub>wetbulb</sub><br>", 
-        #        tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 1),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        temp_soil_10cmF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<sub>soil 4-inch</sub><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          dwptF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>dew point</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        temp_soil_50cmF = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "T<sub>soil 20-inch</sub><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-              )
+          temp_soil_10cmF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>soil 4-inch</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        #vp_actual = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "VP<sub>actual</sub><br>", 
-        #        tags$span(style = "font-weight: normal; font-size: 0.8rem", "(kPa)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 2),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        #vp_deficit = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "VP<sub>deficit</sub><br>", 
-        #        tags$span(style = "font-weight: normal; font-size: 0.8rem", "(kPa)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 2),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        #vp_saturation = reactable::colDef(
-        #  name = 
-        #    htmltools::HTML(
-        #      paste0(
-        #        "VP<sub>saturation</sub><br>", 
-        #        tags$span(style = "font-weight: normal; font-size: 0.8rem", "(kPa)")
-        #      )
-        #    ),
-        #  format = reactable::colFormat(digits = 2),
-        #  html = TRUE,
-        #  na = "NA",
-        #  rowHeader = TRUE
-        #),
-        wind_vector_dir = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WD<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
-              )
+          temp_soil_50cmF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>soil 20-inch</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 0),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_vector_dir = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WD<sub>2-min</sub><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
-              )
+          wind_vector_dir = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WD<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 0),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 0),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_vector_dir_max_daily = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WD<sub>2-min max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "1"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
-              )
+          wind_2min_vector_dir = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WD<sub>2-min</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 0),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 0),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_vector_dir_max_hourly = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WD<sub>2-min max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "2"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
-              )
+          wind_2min_vector_dir_max_daily = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WD<sub>2-min max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "1"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 0),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 0),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_spd_mph = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WS<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
-              )
+          wind_2min_vector_dir_max_hourly = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WD<sub>2-min max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "2"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 0),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_spd_max_mph = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WS<sub>max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "1"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
-              )
+          wind_spd_mph = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WS<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_spd_mean_mph = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WS<sub>2-min</sub><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
-              )
+          wind_spd_max_mph = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WS<sub>max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "1"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_spd_max_mph_daily = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WS<sub>2-min max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "1"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
-              )
+          wind_2min_spd_mean_mph = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WS<sub>2-min</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        ),
-        wind_2min_spd_max_mph_hourly = reactable::colDef(
-          name = 
-            htmltools::HTML(
-              paste0(
-                "WS<sub>2-min max</sub><sup>", 
-                tags$span(style = "font-weight: normal", "2"),
-                "</sup><br>", 
-                tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
-              )
+          wind_2min_spd_max_mph_daily = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WS<sub>2-min max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "1"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
             ),
-          format = reactable::colFormat(digits = 1),
-          html = TRUE,
-          na = "NA",
-          rowHeader = TRUE
-        )
-      ),
+          wind_2min_spd_max_mph_hourly = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "WS<sub>2-min max</sub><sup>", 
+                    tags$span(style = "font-weight: normal", "2"),
+                    "</sup><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(mph)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
+            )
+        ),
       #columnGroups = NULL,
       rownames = FALSE,
       #groupBy = NULL,
@@ -425,7 +371,7 @@ fxn_nwsTable <- function(inData) {
       #rowStyle = NULL,
       fullWidth = TRUE,
       width = "auto",
-      height = 400,
+      #height = 400,
       theme = 
         reactable::reactableTheme(
           color = NULL,

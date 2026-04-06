@@ -4,6 +4,7 @@
 
 
 fxn_slsCardLayoutFooter <- function() {
+  
   slsCardLayoutFooter <- 
     htmltools::p(
       htmltools::HTML(

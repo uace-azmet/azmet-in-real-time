@@ -4,6 +4,7 @@
 
 
 fxn_nwsTableFooter <- function() {
+  
   nwsTableFooter <- 
     htmltools::p(
       htmltools::HTML(

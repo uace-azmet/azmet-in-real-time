@@ -4,6 +4,7 @@
 
 
 fxn_dataETL <- function() {
+  
   idRetrievingData <- 
     shiny::showNotification(
       ui = "Retrieving the latest data . . .", 
