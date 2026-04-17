@@ -69,7 +69,7 @@ fxn_pageBottomText <- function() {
         paste0(
           "AZMet 15-minute data are from ", apiURL, " and accessed using the ", azmetrURL, " R package. Values are based on provisional data. More information about ", webpageDataVariables, ", ", webpageNetworkMap, ", and ", webpageStationMetadata, " is available on the ", webpageAZMet, ". Users of AZMet data and related information assume all risks of its use.",
           htmltools::br(), htmltools::br(),
-          "To cite the above AZMet data, please use: 'Arizona Meteorological Network (", todayYear, ") Arizona Meteorological Network (AZMet) Data. https:://azmet.arizona.edu. Accessed ", todayDate, "', along with 'Arizona Meteorological Network (", todayYear, ") Data Viewer: 15-minute. https://viz.datascience.arizona.edu/azmet/azmet-in-real-time. Accessed ", todayDate, "'.",
+          "To cite the above AZMet data, please use: 'Arizona Meteorological Network (", todayYear, ") Arizona Meteorological Network (AZMet) Data. https:://azmet.arizona.edu. Accessed ", todayDate, "', along with 'Arizona Meteorological Network (", todayYear, ") AZMet in Real-time. https://viz.datascience.arizona.edu/azmet/azmet-in-real-time. Accessed ", todayDate, "'.",
           htmltools::br(), htmltools::br(),
           "For information on how this webpage is put together, please visit the ", webpageCode, " for this tool."
         )
