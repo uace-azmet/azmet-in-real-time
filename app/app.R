@@ -30,7 +30,9 @@ ui <-
       bslib::page(
         title = NULL,
         theme = theme, # `scr##_theme.R`
-        htmltools::tags$head(htmltools::includeHTML("www/pwa/pwa.html")),
+        
+        htmltools::tags$head(htmltools::includeHTML("www/pwa.html")),
+        
         bslib::navset_card_tab(
           id = "navsetCardTab",
           selected = "network-wide-summary",
