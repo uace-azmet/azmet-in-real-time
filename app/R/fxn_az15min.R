@@ -1,9 +1,9 @@
-#' `fxn_dataETL.R` Download AZMet 15-minute data, transform variables, and return to app
+#' `fxn_az15min.R` Download AZMet 15-minute data, transform variables, and return to app
 #' 
-#' @return `dataETL` - Downloaded 15-minute data and transformed variables over previous 24 hours, tibble format
+#' @return `az15min` - Downloaded 15-minute data and transformed variables over previous 24 hours, tibble format
 
 
-fxn_dataETL <- function() {
+fxn_az15min <- function() {
   
   idRetrievingData <- 
     shiny::showNotification(
@@ -15,7 +15,7 @@ fxn_dataETL <- function() {
       type = "message"
     )
   
-  dataETL <- 
+  az15min <- 
     azmetr::az_15min(
       start_date_time = 
         lubridate::now(tzone = "America/Phoenix") - lubridate::hours(24)
@@ -161,5 +161,5 @@ fxn_dataETL <- function() {
   
   on.exit(shiny::removeNotification(id = idRetrievingData), add = TRUE)
   
-  return(dataETL)
+  return(az15min)
 }
