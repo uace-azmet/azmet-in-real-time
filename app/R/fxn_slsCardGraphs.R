@@ -1,7 +1,7 @@
 #' `fxn_slsCardGraphs.R` Generate time series graphs for cards on station-level summaries tab based on user input
 #' 
 #' @param azmetStation - user-specified AZMet station
-#' @param inDataFull - AZMet 15-minute data from `fxn_dataETL.R`
+#' @param inDataFull - AZMet 15-minute data from `fxn_az15min.R`
 #' @return `slsCardGraphs` - `list` of time series graphs for cards on station-level summaries tab based on user input
 
 # https://plotly-r.com/ 

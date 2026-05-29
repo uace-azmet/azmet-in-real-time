@@ -1,6 +1,6 @@
 #' `fxn_nwsData.R` - Filter 15-minute data for the most recent report from each station
 #' 
-#' @param inData - AZMet 15-minute data from `fxn_dataETL.R`
+#' @param inData - AZMet 15-minute data from `fxn_az15min.R`
 #' @return `nwsData` - Most recent data from each station, tibble format
 
 
