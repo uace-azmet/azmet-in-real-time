@@ -116,13 +116,13 @@ server <-
     
     shinyjs::useShinyjs(html = TRUE)
     shinyjs::hideElement(id = "pageBottomText")
-    shinyjs::hideElement(id = "refreshDataButton") # Needs to be 'present' on page for `dataETL <- shiny::reactive({})` statement to work on initial page load
+    shinyjs::hideElement(id = "refreshDataButton") # Needs to be 'present' on page for `az15min <- shiny::reactive({})` statement to work on initial page load
     shinyjs::hideElement(id = "refreshDataInfo")
     
     
     # Observables -----
     
-    shiny::observeEvent(dataETL(), {
+    shiny::observeEvent(az15min(), {
       
       shinyjs::showElement(id = "pageBottomText")
       shinyjs::showElement(id = "refreshDataButton")
@@ -132,7 +132,7 @@ server <-
       shiny::updateSelectInput(
         inputId = "azmetStation",
         label = "AZMet Station",
-        choices = sort(unique(dataETL()$meta_station_name)),
+        choices = sort(unique(az15min()$meta_station_name)),
         selected = azmetStation() # Reactive value initialized in `_global.R`
       )
     })
@@ -146,9 +146,9 @@ server <-
     
     # Reactives -----
     
-    dataETL <- 
+    az15min <- 
       shiny::reactive({
-        fxn_dataETL()
+        fxn_az15min()
       }) %>% 
         shiny::bindEvent(
           input$refreshDataButton,
@@ -158,14 +158,14 @@ server <-
     
     nwsData <- 
       shiny::reactive({
-        fxn_nwsData(inData = dataETL())
+        fxn_nwsData(inData = az15min())
       })
     
     slsCardGraphs <- 
-      shiny::eventReactive(c(input$azmetStation, dataETL(), nwsData()), {
+      shiny::eventReactive(c(input$azmetStation, az15min(), nwsData()), {
         fxn_slsCardGraphs(
           azmetStation = input$azmetStation,
-          inDataFull = dataETL()
+          inDataFull = az15min()
         )
       })
     
@@ -188,25 +188,25 @@ server <-
     
     output$nwsTableFooter <- 
       shiny::renderUI({
-        shiny::req(dataETL())
+        shiny::req(az15min())
         fxn_nwsTableFooter()
       })
     
     output$nwsTableTitle <- 
       shiny::renderUI({
-        shiny::req(dataETL())
+        shiny::req(az15min())
         fxn_nwsTableTitle()
       })
     
     output$pageBottomText <- 
       shiny::renderUI({
-        #shiny::req(dataETL())
+        #shiny::req(az15min())
         fxn_pageBottomText()
       })
     
     output$refreshDataButton <- 
       shiny::renderUI({
-        # shiny::req(dataETL())
+        # shiny::req(az15min())
         shiny::actionButton(
           inputId = "refreshDataButton",
           label = "REFRESH DATA",
@@ -217,7 +217,7 @@ server <-
     
     output$refreshDataHelpText <- 
       shiny::renderUI({
-        #shiny::req(dataETL())
+        #shiny::req(az15min())
         fxn_refreshDataHelpText(activeTab = input$navsetCardTab)
       })
     
@@ -251,19 +251,19 @@ server <-
     
     output$slsCardLayoutFooter <- 
       shiny::renderUI({
-        shiny::req(dataETL())
+        shiny::req(az15min())
         fxn_slsCardLayoutFooter()
       })
     
     output$slsCardLayoutTitle <- 
       shiny::renderUI({
-        shiny::req(dataETL())
+        shiny::req(az15min())
         fxn_slsCardLayoutTitle(azmetStation = input$azmetStation)
       })
     
     output$slsLatestDataUpdate <- 
       shiny::renderUI({
-        shiny::req(dataETL())
+        shiny::req(az15min())
         fxn_slsLatestDataUpdate(
           azmetStation = input$azmetStation,
           inData = nwsData()
