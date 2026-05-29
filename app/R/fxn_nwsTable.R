@@ -121,6 +121,34 @@ fxn_nwsTable <- function(inData) {
               na = "NA",
               rowHeader = TRUE
             ),
+          dwptF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>dew point</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
+            ),
+          temp_heat_indexF = 
+            reactable::colDef(
+              name = 
+                htmltools::HTML(
+                  paste0(
+                    "T<sub>heat index</sub><br>", 
+                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
+                  )
+                ),
+              format = reactable::colFormat(digits = 1),
+              html = TRUE,
+              na = "NA",
+              rowHeader = TRUE
+            ),
           temp_air_maxF = 
             reactable::colDef(
               name = 
@@ -145,20 +173,6 @@ fxn_nwsTable <- function(inData) {
                     "T<sub>min</sub><sup>", 
                     tags$span(style = "font-weight: normal", "1"),
                     "</sup><br>", 
-                    tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
-                  )
-                ),
-              format = reactable::colFormat(digits = 1),
-              html = TRUE,
-              na = "NA",
-              rowHeader = TRUE
-            ),
-          dwptF = 
-            reactable::colDef(
-              name = 
-                htmltools::HTML(
-                  paste0(
-                    "T<sub>dew point</sub><br>", 
                     tags$span(style = "font-weight: normal; font-size: 0.8rem", "(°F)")
                   )
                 ),

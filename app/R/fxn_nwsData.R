@@ -7,6 +7,7 @@
 fxn_nwsData <- function(inData) {
   
   nwsData <- inData |>
+    
     dplyr::select(
       meta_station_name,
       datetime,
@@ -15,10 +16,11 @@ fxn_nwsData <- function(inData) {
       relative_humidity,
       sol_rad_Wm2,
       temp_airF,
+      dwptF,
+      temp_heat_indexF,
       temp_air_maxF,
       temp_air_minF,
       #temp_panelF,
-      dwptF,
       #temp_wetbulbF,
       temp_soil_10cmF,
       temp_soil_50cmF,

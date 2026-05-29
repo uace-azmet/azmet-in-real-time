@@ -42,6 +42,42 @@ fxn_dataETL <- function() {
       wind_spd_mph = fxn_mps_to_mph(wind_spd_mps)
     ) |>
     
+    # Calculate heat index, from https://www.wpc.ncep.noaa.gov/html/heatindex_equation.shtml
+    dplyr::mutate( # Values consistent with Steadman's results
+      temp_heat_indexF = 
+        0.5 * (temp_airF + 61.0 + ((temp_airF - 68.0) * 1.2) + (relative_humidity * 0.094))
+    ) |>
+    dplyr::rowwise() |>
+    dplyr::mutate(
+      temp_air_heat_index_avgF =
+        round(mean(c(temp_airF, temp_heat_indexF), na.rm = TRUE), digits = 1)
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::mutate(
+      temp_heat_indexF =
+        dplyr::if_else( # Rothfusz regression equation 
+          temp_air_heat_index_avgF >= 80.0,
+          -42.379 + 2.04901523 * temp_airF + 10.14333127 * relative_humidity - 0.22475541 * temp_airF * relative_humidity - .00683783 * temp_airF * temp_airF - 0.05481717 * relative_humidity * relative_humidity + 0.00122874 * temp_airF * temp_airF * relative_humidity + 0.00085282 * temp_airF * relative_humidity * relative_humidity - 0.00000199 * temp_airF * temp_airF * relative_humidity * relative_humidity,
+          temp_heat_indexF
+        )
+    ) |>
+    dplyr::mutate(
+      temp_heat_indexF = 
+        dplyr::if_else( # Adjustment 1
+          relative_humidity < 13 & temp_airF >= 80.0 & temp_airF <= 112.0,
+          temp_heat_indexF - (((13 - relative_humidity) / 4) * sqrt((17 - abs(temp_airF - 95)) / 17)),
+          temp_heat_indexF
+        )
+    ) |>
+    dplyr::mutate(
+      temp_heat_indexF =
+        dplyr::if_else( # Adjustment 2
+          relative_humidity > 85 & temp_airF >= 80.0 & temp_airF <= 87.0,
+          temp_heat_indexF + (((relative_humidity - 85) / 10) * ((87 - temp_airF) / 5)),
+          temp_heat_indexF
+        )
+    ) |>
+    
     dplyr::select(
       meta_station_name,
       datetime,
@@ -53,6 +89,7 @@ fxn_dataETL <- function() {
       dwptF,
       temp_air_maxF,
       temp_air_minF,
+      temp_heat_indexF,
       #temp_panelF,
       #temp_wetbulbF,
       temp_soil_10cmF,
@@ -91,6 +128,7 @@ fxn_dataETL <- function() {
           "dwptF",
           "temp_air_maxF",
           "temp_air_minF",
+          "temp_heat_indexF",
           #"temp_panelF",
           #"temp_wetbulbF",
           "temp_soil_10cmF",
