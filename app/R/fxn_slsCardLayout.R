@@ -29,7 +29,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
   
   # `precip_total_in` -----
   
-  card_P1 <- 
+  card_P <- 
     bslib::card(
       bslib::card_header(
         htmltools::div(
@@ -172,6 +172,86 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     )
   
   
+  # `dwptF` -----
+  
+  card_Tdewpoint <- 
+    bslib::card(
+      bslib::card_header(
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderVariable, "T"),
+              "<sub>", tags$span(style = styleHeaderSub, "dew point"), "</sub>"
+            )
+          )
+        ),
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              tags$span(
+                style = styleHeaderValue, 
+                paste0(format(inDataLatest$dwptF, nsmall = 1)," °F") 
+              )
+            )
+          )
+        ),
+        
+        class = classHeader
+      ),
+      
+      bslib::card_body(slsCardGraphs[[5]], class = "p-0"),
+      
+      class = "sls-card",
+      fill = TRUE,
+      full_screen = TRUE,
+      height = cardHeight,
+      id = NULL,
+      max_height = cardHeight,
+      min_height = cardHeight
+    )
+  
+  
+  # `temp_heat_indexF` -----
+  
+  card_Theatindex <- 
+    bslib::card(
+      bslib::card_header(
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderVariable, "T"),
+              "<sub>", tags$span(style = styleHeaderSub, "heat index"), "</sub>"
+            )
+          )
+        ),
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              tags$span(
+                style = styleHeaderValue, 
+                paste0(format(inDataLatest$temp_heat_indexF, nsmall = 1)," °F") 
+              )
+            )
+          )
+        ),
+        
+        class = classHeader
+      ),
+      
+      bslib::card_body(slsCardGraphs[[6]], class = "p-0"),
+      
+      class = "sls-card",
+      fill = TRUE,
+      full_screen = TRUE,
+      height = cardHeight,
+      id = NULL,
+      max_height = cardHeight,
+      min_height = cardHeight
+    )
+  
+  
   # `temp_air_maxF` -----
   
   card_Tmax <- 
@@ -201,7 +281,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[5]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[7]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -242,47 +322,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[6]], class = "p-0"),
-      
-      class = "sls-card",
-      fill = TRUE,
-      full_screen = TRUE,
-      height = cardHeight,
-      id = NULL,
-      max_height = cardHeight,
-      min_height = cardHeight
-    )
-  
-  
-  # `dwptF` -----
-  
-  card_Tdewpoint <- 
-    bslib::card(
-      bslib::card_header(
-        htmltools::div(
-          htmltools::HTML(
-            paste0(
-              tags$span(style = styleHeaderVariable, "T"),
-              "<sub>", tags$span(style = styleHeaderSub, "dew point"), "</sub>"
-            )
-          )
-        ),
-        htmltools::div(
-          htmltools::HTML(
-            paste0(
-              tags$span(style = styleHeaderHelpText, "Latest Update: "),
-              tags$span(
-                style = styleHeaderValue, 
-                paste0(format(inDataLatest$dwptF, nsmall = 1)," °F") 
-              )
-            )
-          )
-        ),
-        
-        class = classHeader
-      ),
-      
-      bslib::card_body(slsCardGraphs[[7]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[8]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -322,7 +362,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[8]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[9]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -362,7 +402,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[9]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[10]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -397,7 +437,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[10]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[11]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -437,7 +477,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[11]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[12]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -478,7 +518,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[12]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[13]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -519,7 +559,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[13]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[14]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -554,7 +594,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[14]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[15]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -595,7 +635,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[15]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[16]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -635,7 +675,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[16]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[17]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -676,7 +716,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[17]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[18]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -717,7 +757,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[18]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[19]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -733,13 +773,14 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
 
   slsCardLayout <- 
     list(
-      card_P1, 
+      card_P, 
       card_RH, 
       card_SR, 
       card_T, 
+      card_Tdewpoint,
+      card_Theatindex,
       card_Tmax, 
       card_Tmin,
-      card_Tdewpoint,
       card_Tsoil10cm,
       card_Tsoil50cm,
       card_WD,
