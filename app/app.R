@@ -132,7 +132,10 @@ server <-
       shiny::updateSelectInput(
         inputId = "azmetStation",
         label = "AZMet Station",
-        choices = sort(unique(az15min()$meta_station_name)),
+        choices = c(
+          "Select a station..." = "",
+          sort(unique(az15min()$meta_station_name))
+        ),
         selected = azmetStation() # Reactive value initialized in `_global.R`
       )
     })
@@ -163,6 +166,7 @@ server <-
     
     slsCardGraphs <- 
       shiny::eventReactive(c(input$azmetStation, az15min(), nwsData()), {
+        req(input$azmetStation)
         fxn_slsCardGraphs(
           azmetStation = input$azmetStation,
           inDataFull = az15min()
@@ -171,6 +175,7 @@ server <-
     
     slsCardLayout <- 
       shiny::eventReactive(c(input$azmetStation, nwsData(), slsCardGraphs()), {
+        req(input$azmetStation)
         fxn_slsCardLayout(
           azmetStation = input$azmetStation,
           inDataLatest = nwsData(),
@@ -249,20 +254,23 @@ server <-
         )
       })
     
-    output$slsCardLayoutFooter <- 
+    output$slsCardLayoutFooter <-
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsCardLayoutFooter()
       })
     
     output$slsCardLayoutTitle <- 
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsCardLayoutTitle(azmetStation = input$azmetStation)
       })
     
     output$slsLatestDataUpdate <- 
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsLatestDataUpdate(
           azmetStation = input$azmetStation,
