@@ -661,6 +661,68 @@ fxn_slsCardGraphs <- function(azmetStation, inDataFull) {
         ),
       
       
+      # `temp_humidity_index` -----
+      
+      plotly::plot_ly(
+        data = inDataFull, 
+        x = ~datetime, 
+        y = ~temp_humidity_index, 
+        type = "scatter", 
+        mode = "lines+markers",
+        line = list(color = traceLineColor, width = traceLineWidth),
+        marker = list(color = traceMarkerColor, size = traceMarkerSize),
+        hoverinfo = "text",
+        text = 
+          ~paste0(
+            "<br><b>Date:</b> ", gsub(" 0", " ", format(datetime, "%b %d, %Y")),
+            "<br><b>Time:</b> ", format(datetime, "%H:%M:%S"),
+            "<br><b>THI:</b> ", format(temp_humidity_index, nsmall = 0)
+          )
+      ) %>%
+        plotly::config(displaylogo = FALSE, displayModeBar = FALSE) %>% 
+        plotly::layout(
+          font = list(color = layoutFontColor, family = layoutFontFamily, size = layoutFontSize),
+          hoverlabel = 
+            list(
+              bordercolor = "rgba(0, 0, 0, 0)",
+              font = list(color = hoverlabelFontColor, family = layoutFontFamily, size = hoverlabelFontSize)
+            ),
+          margin = 
+            list(
+              l = layoutMargin,
+              r = layoutMargin,
+              b = layoutMargin,
+              t = layoutMargin,
+              pad = layoutPadding
+            ),
+          xaxis = 
+            list(
+              fixedrange = TRUE,
+              range = list(~(min(datetime) - 3000), ~(max(datetime) + 3000)), # unix time
+              ticktext = list(~(gsub(" 0", " ", format(as.Date(max(datetime)), "%b %d")))),
+              tickvals = 
+                list(
+                  ~(lubridate::ymd_hms(
+                    paste0(as.Date(max(datetime)), " 00:00:00"), 
+                    tz = "America/Phoenix"
+                  ))
+                ),
+              showgrid = TRUE,
+              showticklabels = TRUE,
+              title = FALSE,
+              zeroline = FALSE
+            ),
+          yaxis = 
+            list(
+              fixedrange = TRUE,
+              rangemode = "normal", # one of ("normal" | "tozero" | "nonnegative")
+              #tickformat = ".1f",
+              title = "<b> </b>", 
+              zeroline = FALSE
+            )
+        ),
+      
+      
       # `wind_vector_dir` -----
       
       plotly::plot_ly(

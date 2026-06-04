@@ -414,6 +414,45 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
     )
   
   
+  # `temp_humidity_index` -----
+  
+  card_THI <- 
+    bslib::card(
+      bslib::card_header(
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderVariable, "THI")
+            )
+          )
+        ),
+        htmltools::div(
+          htmltools::HTML(
+            paste0(
+              tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              tags$span(
+                style = styleHeaderValue, 
+                paste0(format(inDataLatest$temp_humidity_index, nsmall = 0)) 
+              )
+            )
+          )
+        ),
+        
+        class = classHeader
+      ),
+      
+      bslib::card_body(slsCardGraphs[[11]], class = "p-0"),
+      
+      class = "sls-card",
+      fill = TRUE,
+      full_screen = TRUE,
+      height = cardHeight,
+      id = NULL,
+      max_height = cardHeight,
+      min_height = cardHeight
+    )
+  
+  
   # `wind_vector_dir` -----
   
   card_WD <- 
@@ -437,7 +476,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[11]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[12]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -477,7 +516,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[12]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[13]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -518,7 +557,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[13]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[14]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -559,7 +598,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[14]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[15]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -594,7 +633,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[15]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[16]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -635,7 +674,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[16]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[17]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -675,7 +714,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[17]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[18]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -716,7 +755,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[18]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[19]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -757,7 +796,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
         class = classHeader
       ),
       
-      bslib::card_body(slsCardGraphs[[19]], class = "p-0"),
+      bslib::card_body(slsCardGraphs[[20]], class = "p-0"),
       
       class = "sls-card",
       fill = TRUE,
@@ -783,6 +822,7 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
       card_Tmin,
       card_Tsoil10cm,
       card_Tsoil50cm,
+      card_THI,
       card_WD,
       card_WD2min,
       card_WD2minmax1,
