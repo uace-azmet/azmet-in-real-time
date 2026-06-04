@@ -24,8 +24,8 @@ library(cookies)
 
 # Variables --------------------
 
-# Initialize, part of keeping `input$azmetStation` selection when refreshing data
-azmetStation <- shiny::reactiveVal(value = NULL)
+# # Initialize, part of keeping `input$azmetStation` selection when refreshing data
+# azmetStation <- shiny::reactiveVal(value = NULL)
 
 showPageBottomText <- shiny::reactiveVal(FALSE)
 
