@@ -9,6 +9,26 @@
 fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
   
   
+  # Functions ----------
+  
+  windVectorDirArrow <- function(value) {
+    arrow <- 
+      sprintf(
+        htmltools::HTML(
+          "<span style = '%s;'>", bsicons::bs_icon("arrow-down", class = "bolder-icon"), "</span>"
+        ),
+        sprintf(
+          "font-family: monospace; font-size: 0.8rem; display: inline-block; transform: rotate(%fdeg);",
+          value %% 360
+        )
+      )
+    
+    htmltools::HTML(
+      "<span style = 'font-family: monospace; font-size: 0.8rem; display: inline-block;'>", arrow, "</span>"
+    )
+  }
+  
+  
   # Variables ----------
   
   inDataLatest <- inDataLatest %>% 
@@ -465,9 +485,10 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
           htmltools::HTML(
             paste0(
               tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              windVectorDirArrow(inDataLatest$wind_vector_dir),
               tags$span(
                 style = styleHeaderValue, 
-                paste0(format(inDataLatest$wind_vector_dir, nsmall = 0)," deg")
+                paste0(" ", format(inDataLatest$wind_vector_dir, nsmall = 0)," deg")
               )
             )
           )
@@ -505,9 +526,10 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
           htmltools::HTML(
             paste0(
               tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              windVectorDirArrow(inDataLatest$wind_2min_vector_dir),
               tags$span(
                 style = styleHeaderValue, 
-                paste0(format(inDataLatest$wind_2min_vector_dir, nsmall = 0)," deg")
+                paste0(" ", format(inDataLatest$wind_2min_vector_dir, nsmall = 0)," deg")
               )
             )
           )
@@ -546,9 +568,10 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
           htmltools::HTML(
             paste0(
               tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              windVectorDirArrow(inDataLatest$wind_2min_vector_dir_max_daily),
               tags$span(
                 style = styleHeaderValue, 
-                paste0(format(inDataLatest$wind_2min_vector_dir_max_daily, nsmall = 0)," deg")
+                paste0(" ", format(inDataLatest$wind_2min_vector_dir_max_daily, nsmall = 0)," deg")
               )
             )
           )
@@ -587,9 +610,10 @@ fxn_slsCardLayout <- function(azmetStation, inDataLatest, slsCardGraphs) {
           htmltools::HTML(
             paste0(
               tags$span(style = styleHeaderHelpText, "Latest Update: "),
+              windVectorDirArrow(inDataLatest$wind_2min_vector_dir_max_hourly),
               tags$span(
                 style = styleHeaderValue, 
-                paste0(format(inDataLatest$wind_2min_vector_dir_max_hourly, nsmall = 0)," deg")
+                paste0(" ", format(inDataLatest$wind_2min_vector_dir_max_hourly, nsmall = 0)," deg")
               )
             )
           )

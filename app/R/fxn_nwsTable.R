@@ -225,19 +225,38 @@ fxn_nwsTable <- function(inData) {
             ),
           wind_vector_dir = 
             reactable::colDef(
+              align = "right",
               name = 
                 htmltools::HTML(
                   paste0(
                     "WD<br>", tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
                   )
                 ),
-              format = reactable::colFormat(digits = 0),
+              cell = 
+                function(value) {
+                  arrow <- 
+                    sprintf(
+                      htmltools::HTML(
+                        "<span style = '%s;'>", bsicons::bs_icon("arrow-down", class = "bolder-icon"), "</span>"
+                      ),
+                      sprintf(
+                        "display: inline-block; transform: rotate(%fdeg);",
+                        value %% 360
+                      )
+                    )
+                  
+                  htmltools::HTML(
+                    "<span style = 'display: inline-block;'>", format(value %% 360, nsmall = 0), arrow, "</span>"
+                  )
+                },
+              # format = reactable::colFormat(digits = 0),
               html = TRUE,
               na = "NA",
               rowHeader = TRUE
             ),
           wind_2min_vector_dir = 
             reactable::colDef(
+              align = "right",
               name = 
                 htmltools::HTML(
                   paste0(
@@ -245,13 +264,31 @@ fxn_nwsTable <- function(inData) {
                     tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
                   )
                 ),
-              format = reactable::colFormat(digits = 0),
+              cell = 
+                function(value) {
+                  arrow <- 
+                    sprintf(
+                      htmltools::HTML(
+                        "<span style = '%s;'>", bsicons::bs_icon("arrow-down", class = "bolder-icon"), "</span>"
+                      ),
+                      sprintf(
+                        "display: inline-block; transform: rotate(%fdeg);",
+                        value %% 360
+                      )
+                    )
+                  
+                  htmltools::HTML(
+                    "<span style = 'display: inline-block;'>", format(value %% 360, nsmall = 0), arrow, "</span>"
+                  )
+                },
+              # format = reactable::colFormat(digits = 0),
               html = TRUE,
               na = "NA",
               rowHeader = TRUE
             ),
           wind_2min_vector_dir_max_daily = 
             reactable::colDef(
+              align = "right",
               name = 
                 htmltools::HTML(
                   paste0(
@@ -261,13 +298,31 @@ fxn_nwsTable <- function(inData) {
                     tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
                   )
                 ),
-              format = reactable::colFormat(digits = 0),
+              cell = 
+                function(value) {
+                  arrow <- 
+                    sprintf(
+                      htmltools::HTML(
+                        "<span style = '%s;'>", bsicons::bs_icon("arrow-down", class = "bolder-icon"), "</span>"
+                      ),
+                      sprintf(
+                        "display: inline-block; transform: rotate(%fdeg);",
+                        value %% 360
+                      )
+                    )
+                  
+                  htmltools::HTML(
+                    "<span style = 'display: inline-block;'>", format(value %% 360, nsmall = 0), arrow, "</span>"
+                  )
+                },
+              # format = reactable::colFormat(digits = 0),
               html = TRUE,
               na = "NA",
               rowHeader = TRUE
             ),
           wind_2min_vector_dir_max_hourly = 
             reactable::colDef(
+              align = "right",
               name = 
                 htmltools::HTML(
                   paste0(
@@ -277,7 +332,24 @@ fxn_nwsTable <- function(inData) {
                     tags$span(style = "font-weight: normal; font-size: 0.8rem", "(deg)")
                   )
                 ),
-              format = reactable::colFormat(digits = 0),
+              cell = 
+                function(value) {
+                  arrow <- 
+                    sprintf(
+                      htmltools::HTML(
+                        "<span style = '%s;'>", bsicons::bs_icon("arrow-down", class = "bolder-icon"), "</span>"
+                      ),
+                      sprintf(
+                        "display: inline-block; transform: rotate(%fdeg);",
+                        value %% 360
+                      )
+                    )
+                  
+                  htmltools::HTML(
+                    "<span style = 'display: inline-block;'>", format(value %% 360, nsmall = 0), arrow, "</span>"
+                  )
+                },
+              # format = reactable::colFormat(digits = 0),
               html = TRUE,
               na = "NA",
               rowHeader = TRUE
