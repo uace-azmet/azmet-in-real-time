@@ -41,17 +41,6 @@
       ],
       "Hash": "f6a81550f166acbe2cd5229e9ca079b9"
     },
-    "PKI": {
-      "Package": "PKI",
-      "Version": "0.1-14",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "base64enc"
-      ],
-      "Hash": "f5b9c6b2f62f1fa3dd53fd1ddccbb241"
-    },
     "R6": {
       "Package": "R6",
       "Version": "2.6.1",
@@ -82,17 +71,6 @@
         "utils"
       ],
       "Hash": "e7bdd9ee90e96921ca8a0f1972d66682"
-    },
-    "RcppTOML": {
-      "Package": "RcppTOML",
-      "Version": "0.2.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp"
-      ],
-      "Hash": "23eeca7d3c7d63fc7449108c0a66178c"
     },
     "askpass": {
       "Package": "askpass",
@@ -207,12 +185,48 @@
       ],
       "Hash": "16850760556401a2eeb27d39bd11c9cb"
     },
+    "clock": {
+      "Package": "clock",
+      "Version": "0.7.4",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "cli",
+        "cpp11",
+        "lifecycle",
+        "rlang",
+        "tzdb",
+        "vctrs"
+      ],
+      "Hash": "dce6a8b20db8fc2fe9967d85f770b475"
+    },
     "commonmark": {
       "Package": "commonmark",
       "Version": "2.0.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Hash": "8cba62334c1088d21689d353a7e87663"
+    },
+    "cookies": {
+      "Package": "cookies",
+      "Version": "0.2.3",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "cli",
+        "clock",
+        "glue",
+        "htmltools",
+        "httpuv",
+        "jsonlite",
+        "purrr",
+        "rlang",
+        "shiny",
+        "stats",
+        "vctrs"
+      ],
+      "Hash": "ec07bfdaeb45d6ab53b51d99c3dd3131"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -697,18 +711,6 @@
       ],
       "Hash": "627d6993db1043703c0b084fa432f21f"
     },
-    "packrat": {
-      "Package": "packrat",
-      "Version": "0.9.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "tools",
-        "utils"
-      ],
-      "Hash": "d3289899c84c65def1a783ea0a9ea0eb"
-    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.10.2",
@@ -878,38 +880,6 @@
       ],
       "Hash": "df99277f63d01c34e95e3d2f06a79736"
     },
-    "rsconnect": {
-      "Package": "rsconnect",
-      "Version": "1.5.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "PKI",
-        "R",
-        "cli",
-        "curl",
-        "digest",
-        "jsonlite",
-        "lifecycle",
-        "openssl",
-        "packrat",
-        "renv",
-        "rlang",
-        "rstudioapi",
-        "snowflakeauth",
-        "tools",
-        "utils",
-        "yaml"
-      ],
-      "Hash": "43ac7d36cea2d468918e604c9e823e80"
-    },
-    "rstudioapi": {
-      "Package": "rstudioapi",
-      "Version": "0.17.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "5f90cd73946d706cfe26024294236113"
-    },
     "sass": {
       "Package": "sass",
       "Version": "0.4.10",
@@ -989,20 +959,6 @@
         "shiny"
       ],
       "Hash": "802e4786b353a4bb27116957558548d5"
-    },
-    "snowflakeauth": {
-      "Package": "snowflakeauth",
-      "Version": "0.1.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "RcppTOML",
-        "cli",
-        "curl",
-        "jsonlite",
-        "rlang"
-      ],
-      "Hash": "e32f00aeec04ec7d1151dde27ea065b8"
     },
     "sourcetools": {
       "Package": "sourcetools",
@@ -1129,6 +1085,17 @@
         "xfun"
       ],
       "Hash": "02d65e0c0415bf36a7ddc0d2ba50a840"
+    },
+    "tzdb": {
+      "Package": "tzdb",
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "cpp11"
+      ],
+      "Hash": "09e3961e87b7bafa4a9340bbb34aeda8"
     },
     "utf8": {
       "Package": "utf8",

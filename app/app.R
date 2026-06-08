@@ -1,6 +1,5 @@
 # Tabular and graphical summaries of the most recent 15-minute data from stations across the network
 
-
 # PROCESS FOR PWA -----
 
 # dir.create("app/www/pwa")
@@ -12,9 +11,7 @@
 # Copy `manifest.webmanifest` to `app/www/`
 # Add `tags$head(includeHTML("www/pwa/pwa.html"))` to `app.R`
 
-
 # UI --------------------
-
 
 ui <-
   htmltools::htmlTemplate(
@@ -26,86 +23,91 @@ ui <-
     #navsetCardTab = bslib::navset_card_tab(
 
     # Work-around by placing the navset in `bslib::page()`, which correctly renders tabs on webpage
-    navsetCardTab =
-      bslib::page(
+    navsetCardTab = bslib::page(
+      title = NULL,
+      theme = theme, # `scr##_theme.R`
+
+      htmltools::tags$head(htmltools::includeHTML("www/pwa.html")),
+
+      bslib::navset_card_tab(
+        id = "navsetCardTab",
+        selected = "network-wide-summary",
         title = NULL,
-        theme = theme, # `scr##_theme.R`
-        
-        htmltools::tags$head(htmltools::includeHTML("www/pwa.html")),
-        
-        bslib::navset_card_tab(
-          id = "navsetCardTab",
-          selected = "network-wide-summary",
-          title = NULL,
-          sidebar = NULL,
-          header = NULL,
-          footer = NULL,
-          height = 780,
-          full_screen = TRUE,
-          #wrapper = card_body,
-  
-          
-          # Network-wide Summary (nws) -----
-  
-          bslib::nav_panel(
-            # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
-            title = 
-              htmltools::div(
-                htmltools::span("Network-wide Summary", class = "d-none d-md-block"), # on devices "medium" (md) or larger
-                htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
-              ),
-  
-            shiny::htmlOutput(outputId = "nwsTableTitle"),
-            reactable::reactableOutput(outputId = "nwsTable", height = "100%"),
-            shiny::htmlOutput(outputId = "nwsTableFooter"),
-  
-            value = "network-wide-summary"
+        sidebar = NULL,
+        header = NULL,
+        footer = NULL,
+        height = 780,
+        full_screen = TRUE,
+        #wrapper = card_body,
+
+        # Network-wide Summary (nws) -----
+
+        bslib::nav_panel(
+          # https://getbootstrap.com/docs/5.0/utilities/display/#hiding-elements
+          title = htmltools::div(
+            htmltools::span(
+              "Network-wide Summary",
+              class = "d-none d-md-block"
+            ), # on devices "medium" (md) or larger
+            htmltools::span("Network-wide...", class = "d-block d-md-none") # on smaller devices
           ),
-  
-          
-          # Station-level Summaries (sls) -----
-  
-          bslib::nav_panel(
-            title = htmltools::div(
-              htmltools::span("Station-level Summaries", class = "d-none d-md-block"),
-              htmltools::span("Station-level...", class = "d-block d-md-none")
-            ),
-  
-            bslib::layout_sidebar(
-              sidebar = slsSidebar, # `scr##_slsSidebar.R`
-  
-              shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
-              shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
-              shiny::htmlOutput(outputId = "slsCardLayout"),
-              shiny::htmlOutput(outputId = "slsCardLayoutFooter")
-  
-              #fillable = TRUE,
-              #fill = TRUE,
-              #bg = NULL,
-              #fg = NULL,
-              #border = NULL,
-              #border_radius = NULL,
-              #border_color = NULL,
-              #padding = NULL,
-              #gap = NULL,
-              #height = 2000
-            ),
-  
-            value = "station-level-summaries"
-          )
-        ) |>
-          htmltools::tagAppendAttributes(class = "border-0 rounded-0 shadow-none"), # https://getbootstrap.com/docs/5.0/utilities/api/
-  
-        htmltools::div(
-          shiny::uiOutput(outputId = "refreshDataButton"),
-          shiny::uiOutput(outputId = "refreshDataInfo"),
-  
-          style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
+
+          shiny::htmlOutput(outputId = "nwsTableTitle"),
+          reactable::reactableOutput(outputId = "nwsTable", height = "100%"),
+          shiny::htmlOutput(outputId = "nwsTableFooter"),
+
+          value = "network-wide-summary"
         ),
-  
-        shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
-      )
-  )
+
+        # Station-level Summaries (sls) -----
+
+        bslib::nav_panel(
+          title = htmltools::div(
+            htmltools::span(
+              "Station-level Summaries",
+              class = "d-none d-md-block"
+            ),
+            htmltools::span("Station-level...", class = "d-block d-md-none")
+          ),
+
+          bslib::layout_sidebar(
+            sidebar = slsSidebar, # `scr##_slsSidebar.R`
+
+            shiny::htmlOutput(outputId = "slsCardLayoutTitle"),
+            shiny::htmlOutput(outputId = "slsLatestDataUpdate"),
+            shiny::htmlOutput(outputId = "slsCardLayout"),
+            shiny::htmlOutput(outputId = "slsCardLayoutFooter")
+
+            #fillable = TRUE,
+            #fill = TRUE,
+            #bg = NULL,
+            #fg = NULL,
+            #border = NULL,
+            #border_radius = NULL,
+            #border_color = NULL,
+            #padding = NULL,
+            #gap = NULL,
+            #height = 2000
+          ),
+
+          value = "station-level-summaries"
+        )
+      ) |>
+        htmltools::tagAppendAttributes(
+          class = "border-0 rounded-0 shadow-none"
+        ), # https://getbootstrap.com/docs/5.0/utilities/api/
+
+      htmltools::div(
+        shiny::uiOutput(outputId = "refreshDataButton"),
+        shiny::uiOutput(outputId = "refreshDataInfo"),
+
+        style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
+      ),
+
+      shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
+    )
+  ) |>
+  cookies::add_cookie_handlers()
 
 
 # Server --------------------
@@ -132,19 +134,34 @@ server <-
       shiny::updateSelectInput(
         inputId = "azmetStation",
         label = "AZMet Station",
-        choices = sort(unique(az15min()$meta_station_name)),
+        choices = c(
+          "Select a station..." = "",
+          sort(unique(az15min()$meta_station_name))
+        ),
         selected = azmetStation() # Reactive value initialized in `_global.R`
       )
     })
-    
-    shiny::observeEvent(input$azmetStation, {
-      azmetStation(input$azmetStation)
-    }, 
+
+    shiny::observeEvent(
+      input$azmetStation,
+      {
+        azmetStation(input$azmetStation)
+        cookies::set_cookie(
+          cookie_name = "azmetStation",
+          cookie_value = azmetStation()
+        )
+      },
       ignoreInit = TRUE
     )
   
     
     # Reactives -----
+
+    # Initialize, part of keeping `input$azmetStation` selection when refreshing
+    # data
+    azmetStation <- shiny::reactiveVal(
+      value = isolate(cookies::get_cookie("azmetStation"))
+    )
     
     az15min <- 
       shiny::reactive({
@@ -163,6 +180,7 @@ server <-
     
     slsCardGraphs <- 
       shiny::eventReactive(c(input$azmetStation, az15min(), nwsData()), {
+        req(input$azmetStation)
         fxn_slsCardGraphs(
           azmetStation = input$azmetStation,
           inDataFull = az15min()
@@ -171,6 +189,7 @@ server <-
     
     slsCardLayout <- 
       shiny::eventReactive(c(input$azmetStation, nwsData(), slsCardGraphs()), {
+        req(input$azmetStation)
         fxn_slsCardLayout(
           azmetStation = input$azmetStation,
           inDataLatest = nwsData(),
@@ -249,20 +268,23 @@ server <-
         )
       })
     
-    output$slsCardLayoutFooter <- 
+    output$slsCardLayoutFooter <-
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsCardLayoutFooter()
       })
     
     output$slsCardLayoutTitle <- 
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsCardLayoutTitle(azmetStation = input$azmetStation)
       })
     
     output$slsLatestDataUpdate <- 
       shiny::renderUI({
+        req(input$azmetStation)
         shiny::req(az15min())
         fxn_slsLatestDataUpdate(
           azmetStation = input$azmetStation,

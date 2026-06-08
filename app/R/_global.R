@@ -11,10 +11,10 @@ library(RColorBrewer)
 library(reactable)
 library(shiny)
 library(shinyjs)
+library(cookies)
 
 
 # Files --------------------
-
 
 # Functions. Loaded automatically at app start if in `R` folder
 #source("./R/fxn_functionName.R", local = TRUE)
@@ -22,12 +22,10 @@ library(shinyjs)
 # Scripts. Loaded automatically at app start if in `R` folder
 #source("./R/scr_scriptName.R", local = TRUE)
 
-
 # Variables --------------------
 
-
-# Initialize, part of keeping `input$azmetStation` selection when refreshing data
-azmetStation <- shiny::reactiveVal(value = "Aguila")
+# # Initialize, part of keeping `input$azmetStation` selection when refreshing data
+# azmetStation <- shiny::reactiveVal(value = NULL)
 
 showPageBottomText <- shiny::reactiveVal(FALSE)
 
