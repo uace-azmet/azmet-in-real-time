@@ -101,6 +101,7 @@ ui <-
         shiny::uiOutput(outputId = "refreshDataButton"),
         shiny::uiOutput(outputId = "refreshDataInfo"),
 
+        class = "refresh-data-div",
         style = "display: flex; align-items: top; gap: 0px;", # Flexbox styling
       ),
 
